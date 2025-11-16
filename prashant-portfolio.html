@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Prashant Chataut — Neobrutalist Portfolio</title>
+    <meta name="description" content="Neobrutalist portfolio for Prashant Chataut, a 16-year-old thinker who blends philosophy, study systems, and writing." />
+    <meta name="theme-color" content="#0d0d0d" />
+    <meta property="og:title" content="Prashant Chataut — Portfolio" />
+    <meta property="og:description" content="Philosophy, writing, and deliberate learning powering the NeverZero mindset." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://github.com/prashantchataut" />
+    <meta property="og:image" content="https://github.com/prashantchataut.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Prashant Chataut — Portfolio" />
+    <meta name="twitter:description" content="Philosophy, writing, and deliberate learning powering the NeverZero mindset." />
+    <meta name="twitter:image" content="https://github.com/prashantchataut.png" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%230d0d0d'/%3E%3Ctext x='32' y='42' font-size='34' text-anchor='middle' fill='%23c9ff0f' font-family='Space Grotesk'%3EP%3C/text%3E%3C/svg%3E" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'system-ui', 'sans-serif'],
+                        mono: ['IBM Plex Mono', 'ui-monospace', 'SFMono-Regular'],
+                    },
+                    colors: {
+                        ink: '#0d0d0d',
+                        ivory: '#f2f2f2',
+                        acid: '#c9ff0f',
+                        punch: '#ff5f45',
+                        cyber: '#00edff',
+                        slate: '#7a7a7a',
+                    },
+                    boxShadow: {
+                        brutal: '8px 8px 0 #f2f2f2',
+                        neon: '0 0 30px rgba(0, 237, 255, 0.4)',
+                    },
+                    backgroundImage: {
+                        grain: "url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27500%27 height=%27500%27 viewBox=%270 0 500 500%27%3E%3Cfilter id=%27n%27 x=%270%27 y=%270%27 width=%27100%25%27 height=%27100%25%27%3E%3CfeTurbulence type=%27fractalNoise%27 baseFrequency=%270.85%27 numOctaves=%273%27 stitchTiles=%27stitch%27/%3E%3C/filter%3E%3Crect width=%27100%25%27 height=%27100%25%27 filter=%27url(%23n)%27 opacity=%270.12%27/%3E%3C/svg%3E')",
+                    },
+                    animation: {
+                        float: 'float 8s ease-in-out infinite',
+                        pulseDash: 'pulseDash 3s ease-in-out infinite',
+                        glitch: 'glitch 2s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(-6px) rotate(-1deg)' },
+                            '50%': { transform: 'translateY(6px) rotate(1deg)' },
+                        },
+                        pulseDash: {
+                            '0%': { opacity: 0.2 },
+                            '50%': { opacity: 0.8 },
+                            '100%': { opacity: 0.2 },
+                        },
+                        glitch: {
+                            '0%': { clipPath: 'inset(80% 0 5% 0)', transform: 'skew(0.5deg)' },
+                            '20%': { clipPath: 'inset(10% 0 85% 0)', transform: 'skew(-0.5deg)' },
+                            '40%': { clipPath: 'inset(50% 0 30% 0)' },
+                            '60%': { clipPath: 'inset(20% 0 65% 0)' },
+                            '80%': { clipPath: 'inset(40% 0 45% 0)' },
+                            '100%': { clipPath: 'inset(80% 0 5% 0)' },
+                        },
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Space Grotesk', system-ui, sans-serif;
+            background-image: radial-gradient(circle at 20% 20%, rgba(201, 255, 15, 0.08), transparent 40%),
+                radial-gradient(circle at 80% 0%, rgba(0, 237, 255, 0.08), transparent 35%),
+                linear-gradient(120deg, rgba(13, 13, 13, 0.95), rgba(20, 20, 20, 0.9));
+        }
+        .noise-overlay {
+            pointer-events: none;
+            position: fixed;
+            inset: 0;
+            background: url('https://www.transparenttextures.com/patterns/asfalt-light.png');
+            mix-blend-mode: overlay;
+            opacity: 0.25;
+            animation: grainMove 6s steps(10) infinite;
+        }
+        .nav-link {
+            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        }
+        .nav-active {
+            background-color: #c9ff0f;
+            color: #0d0d0d;
+            border-color: #c9ff0f;
+        }
+        @keyframes grainMove {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(-5%, -5%); }
+            50% { transform: translate(5%, -5%); }
+            75% { transform: translate(-5%, 5%); }
+            100% { transform: translate(0, 0); }
+        }
+        .perspective {
+            perspective: 1400px;
+        }
+        .preserve-3d {
+            transform-style: preserve-3d;
+        }
+        .card-face {
+            backface-visibility: hidden;
+        }
+    </style>
+</head>
+<body class="bg-ink text-ivory relative overflow-x-hidden">
+    <div class="noise-overlay"></div>
+    <div class="fixed inset-0 pointer-events-none mix-blend-screen opacity-20 bg-gradient-to-br from-acid/20 via-transparent to-cyber/20"></div>
+
+    <header class="relative border-b-4 border-ivory/60">
+        <nav class="max-w-6xl mx-auto px-5 py-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <a href="#top" class="text-2xl font-semibold tracking-wide hover:text-acid transition-colors">PRASHANT//16</a>
+            <div class="flex flex-wrap gap-4 text-sm font-mono uppercase tracking-wider">
+                <a href="#about" data-section="about" class="nav-link px-4 py-2 border-2 border-ivory hover:bg-acid hover:text-ink transition">About</a>
+                <a href="#skills" data-section="skills" class="nav-link px-4 py-2 border-2 border-ivory hover:bg-punch hover:text-ink transition">Skills</a>
+                <a href="#projects" data-section="projects" class="nav-link px-4 py-2 border-2 border-ivory hover:bg-cyber hover:text-ink transition">Projects</a>
+                <a href="#contact" data-section="contact" class="nav-link px-4 py-2 border-2 border-ivory hover:bg-ivory hover:text-ink transition">Contact</a>
+            </div>
+        </nav>
+        <div class="absolute inset-x-0 bottom-0 h-2 bg-[repeating-linear-gradient(90deg,#f2f2f2_0_40px,#0d0d0d_40px_80px,#00edff_80px_120px)] animate-pulseDash"></div>
+    </header>
+
+    <main id="top" class="max-w-6xl mx-auto px-5 py-16 space-y-24">
+        <section id="about" class="grid lg:grid-cols-[1.2fr_0.8fr] gap-10 items-stretch">
+            <div class="p-8 bg-ink/80 border-4 border-ivory shadow-brutal relative overflow-hidden" data-animate>
+                <div class="absolute -top-16 -right-16 w-48 h-48 bg-acid/40 blur-3xl rounded-full animate-float"></div>
+                <p class="font-mono text-sm uppercase tracking-[0.4em] text-slate">About Me</p>
+                <h1 class="text-4xl sm:text-5xl font-bold mt-4 leading-tight">Prashant Chataut<br /><span class="text-acid">16 • Philosophy, writing & deliberate learning</span></h1>
+                <p class="mt-6 text-lg text-ivory/90">I explore ideas that stretch me. Philosophy, writing, and disciplined learning shape how I move through school, projects, and conversations. I care about questions, patterns, and clarity—whether I’m annotating a dense text, drafting an essay, or shaping NeverZero. Depth beats spectacle. Creativity beats conformity. Most nights end with a stack of quotes, highlighted and argued with until they earn a place in my notebooks.</p>
+                <div class="mt-8 grid md:grid-cols-2 gap-6">
+                    <div class="border-2 border-ivory p-4 bg-ink/90">
+                        <p class="text-sm font-mono text-slate">Core Focus</p>
+                        <p class="text-2xl font-semibold mt-2">Philosophy + Writing</p>
+                        <p class="text-slate mt-4">Analytical essays and reflections that document how I think, learn, and test ideas.</p>
+                    </div>
+                    <div class="border-2 border-ivory p-4 bg-ink/90">
+                        <p class="text-sm font-mono text-slate">Academic Engine</p>
+                        <p class="text-2xl font-semibold mt-2">Systems Thinking</p>
+                        <p class="text-slate mt-4">Structured study plans and feedback loops that keep curiosity organized.</p>
+                    </div>
+                </div>
+                <div class="mt-8 flex flex-wrap gap-4 text-sm font-mono">
+                    <span class="px-4 py-2 border-2 border-acid text-acid">Press N for neon mode ⚡</span>
+                    <span class="px-4 py-2 border-2 border-cyber text-cyber">Scroll for more ↓</span>
+                </div>
+            </div>
+            <div class="border-4 border-ivory grid gap-4 p-6 bg-ink shadow-brutal" data-animate>
+                <div class="relative overflow-hidden border-2 border-ivory p-6 bg-gradient-to-br from-ink via-ink to-cyber/20">
+                    <p class="font-mono text-sm text-slate">Identity Card</p>
+                    <h2 class="text-3xl font-bold mt-4">Prashant Chataut</h2>
+                    <p class="text-slate">Philosophy nerd • Writer • Pattern hunter</p>
+                    <div class="mt-6 text-sm space-y-2">
+                        <p>Age: <span class="text-acid">16</span></p>
+                        <p>Mode: <span class="text-punch">Showing up daily</span></p>
+                        <p>Current Project: <span class="text-cyber">NeverZero</span></p>
+                    </div>
+                    <div class="absolute -bottom-4 -right-4 w-28 h-28 border-2 border-ivory rotate-12"></div>
+                </div>
+                <div class="border-2 border-ivory p-6 bg-ink space-y-4">
+                    <p class="font-mono text-sm text-slate">Working Style</p>
+                    <ul class="mt-4 space-y-3 text-lg">
+                        <li class="flex items-center gap-3"><span class="h-3 w-3 bg-acid"></span>I ask one question too many so I don’t miss the real issue.</li>
+                        <li class="flex items-center gap-3"><span class="h-3 w-3 bg-punch"></span>I draft, let it breathe, then return with a sharper point of view.</li>
+                        <li class="flex items-center gap-3"><span class="h-3 w-3 bg-cyber"></span>If something feels messy, I sketch it until the pattern appears.</li>
+                    </ul>
+                    <div class="border-t border-ivory/40 pt-4">
+                        <p class="font-mono text-xs uppercase tracking-widest text-slate">Quote log</p>
+                        <div class="mt-3" data-quote-viewport>
+                            <p class="text-sm text-slate" data-quote-text>“Waste no more time arguing what a good person should be. Be one.”</p>
+                            <p class="text-xs text-slate/80 mt-1" data-quote-source>— Marcus Aurelius</p>
+                        </div>
+                        <div class="flex gap-2 mt-3" aria-hidden="true">
+                            <span class="h-1 w-6 bg-acid/50" data-quote-indicator="0"></span>
+                            <span class="h-1 w-6 bg-ivory/20" data-quote-indicator="1"></span>
+                            <span class="h-1 w-6 bg-ivory/20" data-quote-indicator="2"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="space-y-10" data-animate>
+            <div class="flex flex-col gap-4">
+                <p class="font-mono text-sm uppercase tracking-[0.4em] text-slate">Skill Radar</p>
+                <h2 class="text-4xl font-semibold">Skills</h2>
+                <p class="text-lg text-ivory/80">Grounded strengths shaped by reading, research, and building.</p>
+            </div>
+            <div class="grid gap-6 md:grid-cols-2">
+                <article class="border-4 border-ivory p-6 bg-ink/90 shadow-brutal">
+                    <header class="flex items-center justify-between">
+                        <h3 class="text-2xl font-semibold">Philosophy & Writing</h3>
+                        <span class="px-3 py-1 bg-acid text-ink font-mono text-sm">Advanced</span>
+                    </header>
+                    <div class="mt-4 h-3 bg-ivory/20 relative overflow-hidden">
+                        <span class="absolute inset-y-0 left-0 bg-acid" style="width:90%"></span>
+                    </div>
+                    <p class="text-slate">I write my heart out and let the pages show how I process arguments.</p>
+                </article>
+                <article class="border-4 border-ivory p-6 bg-ink/90 shadow-brutal">
+                    <header class="flex items-center justify-between">
+                        <h3 class="text-2xl font-semibold">Science Mastery</h3>
+                        <span class="px-3 py-1 bg-cyber text-ink font-mono text-sm">Intermediate</span>
+                    </header>
+                    <div class="mt-4 h-3 bg-ivory/20 relative overflow-hidden">
+                        <span class="absolute inset-y-0 left-0 bg-cyber" style="width:70%"></span>
+                    </div>
+                    <p class="text-slate">I work through physics, chemistry, and biology problems with curiosity and careful reasoning.</p>
+                </article>
+                <article class="border-4 border-ivory p-6 bg-ink/90 shadow-brutal">
+                    <header class="flex items-center justify-between">
+                        <h3 class="text-2xl font-semibold">English Communication</h3>
+                        <span class="px-3 py-1 bg-punch text-ink font-mono text-sm">Intermediate</span>
+                    </header>
+                    <div class="mt-4 h-3 bg-ivory/20 relative overflow-hidden">
+                        <span class="absolute inset-y-0 left-0 bg-punch" style="width:65%"></span>
+                    </div>
+                    <p class="text-slate">I translate complex ideas into clear, confident language for classmates and mentors.</p>
+                </article>
+                <article class="border-4 border-ivory p-6 bg-ink/90 shadow-brutal">
+                    <header class="flex items-center justify-between">
+                        <h3 class="text-2xl font-semibold">Critical Thinking & Study Planning</h3>
+                        <span class="px-3 py-1 bg-ivory text-ink font-mono text-sm">Intermediate</span>
+                    </header>
+                    <div class="mt-4 h-3 bg-ivory/20 relative overflow-hidden">
+                        <span class="absolute inset-y-0 left-0 bg-ivory text-ink" style="width:75%"></span>
+                    </div>
+                    <p class="text-slate">I structure projects, study plans, and retrospectives so I always know the next step.</p>
+                </article>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6" data-animate>
+                <article class="border-4 border-ivory p-5 bg-ink/90 shadow-brutal flex flex-col gap-3">
+                    <header class="flex items-center gap-3">
+                        <span class="h-12 w-12 border-2 border-ivory flex items-center justify-center font-mono">HTML</span>
+                        <div>
+                            <p class="text-sm text-slate">Coding Foundations</p>
+                            <h4 class="text-xl font-semibold">Intermediate</h4>
+                        </div>
+                    </header>
+                    <p class="text-slate">HTML (Intermediate): I build semantic layouts for experiments like NeverZero.</p>
+                </article>
+                <article class="border-4 border-ivory p-5 bg-ink/90 shadow-brutal flex flex-col gap-3">
+                    <header class="flex items-center gap-3">
+                        <span class="h-12 w-12 border-2 border-ivory flex items-center justify-center font-mono">CSS</span>
+                        <div>
+                            <p class="text-sm text-slate">Coding Foundations</p>
+                            <h4 class="text-xl font-semibold">Beginner</h4>
+                        </div>
+                    </header>
+                    <p class="text-slate">CSS (Beginner): I experiment with grids, texture, and bold typography.</p>
+                </article>
+                <article class="border-4 border-ivory p-5 bg-ink/90 shadow-brutal flex flex-col gap-3">
+                    <header class="flex items-center gap-3">
+                        <span class="h-12 w-12 border-2 border-ivory flex items-center justify-center font-mono">JS</span>
+                        <div>
+                            <p class="text-sm text-slate">Coding Foundations</p>
+                            <h4 class="text-xl font-semibold">Beginner</h4>
+                        </div>
+                    </header>
+                    <p class="text-slate">JS (Beginner): I add small interactions and Easter eggs to whatever I’m building.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="projects" class="space-y-8" data-animate>
+            <div>
+                <p class="font-mono text-sm uppercase tracking-[0.4em] text-slate">Projects</p>
+                <h2 class="text-4xl font-semibold mt-4">Projects</h2>
+            </div>
+            <div class="grid gap-8 lg:grid-cols-2">
+                <article class="border-4 border-ivory p-6 bg-ink shadow-brutal perspective">
+                    <div class="relative preserve-3d transition-transform duration-500 group hover:rotate-y-180">
+                        <div class="card-face p-6 min-h-[260px] border-2 border-ivory bg-gradient-to-r from-ink to-cyber/20 flex flex-col justify-between">
+                            <div>
+                                <p class="font-mono text-sm text-slate">Flagship</p>
+                                <h3 class="text-3xl font-semibold mt-3">NeverZero</h3>
+                            </div>
+                            <p class="text-slate">Consistent effort, calm accountability, and problem-solving packaged into a personal productivity OS.</p>
+                            <div class="flex gap-3 text-sm text-ink font-mono mt-4">
+                                <span class="px-3 py-1 bg-acid">Philosophy</span>
+                                <span class="px-3 py-1 bg-punch">UX</span>
+                                <span class="px-3 py-1 bg-cyber">Systems</span>
+                            </div>
+                        </div>
+                        <div class="card-face rotate-y-180 absolute inset-0 p-6 bg-ink border-2 border-ivory flex flex-col justify-between">
+                            <p class="text-lg">Currently tightening the copy, refining the dashboard flow, and testing new reflection prompts.</p>
+                            <a href="https://github.com/prashantchataut/NeverZero" target="_blank" rel="noreferrer" class="inline-flex items-center gap-3 px-4 py-3 border-2 border-ivory text-ivory hover:bg-acid hover:text-ink transition">
+                                <span class="font-semibold">View on GitHub</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.25 6.75L6.75 17.25m0-10.5h10.5v10.5" /></svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                <article class="border-4 border-ivory p-6 bg-ink shadow-brutal flex flex-col gap-6">
+                    <div class="flex items-center gap-4">
+                        <div class="h-16 w-16 border-2 border-ivory flex items-center justify-center font-mono">Lab</div>
+                        <div>
+                            <h3 class="text-2xl font-semibold">Writing & Philosophy Notes</h3>
+                            <p class="text-slate">A growing collection of essays, annotations, and reflections on questions I care about.</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 text-slate">
+                        <li>— Essays on discipline, attention, and curiosity</li>
+                        <li>— Philosophy notes that track questions I’m chasing</li>
+                        <li>— Occasional PDFs and blog posts for anyone following along</li>
+                    </ul>
+                    <button class="self-start px-4 py-3 border-2 border-ivory hover:bg-punch hover:text-ink transition">Read a sample</button>
+                </article>
+            </div>
+        </section>
+
+        <section id="contact" class="space-y-6 border-4 border-ivory p-8 bg-ink shadow-brutal" data-animate>
+            <div class="flex flex-col gap-3">
+                <p class="font-mono text-sm uppercase tracking-[0.4em] text-slate">Contact</p>
+                <h2 class="text-4xl font-semibold">Contact</h2>
+                <p class="text-lg text-slate">Reach out for collaborations, thoughtful conversations, or feedback swaps.</p>
+            </div>
+            <div class="grid gap-5 md:grid-cols-2">
+                <a href="mailto:prashantchataut8@gmail.com" class="group border-2 border-ivory p-5 flex items-center gap-4 hover:bg-acid hover:text-ink transition">
+                    <div class="h-12 w-12 border-2 border-current flex items-center justify-center font-mono">@</div>
+                    <div>
+                        <p class="text-sm text-slate group-hover:text-ink">Email</p>
+                        <p class="text-xl font-semibold">prashantchataut8@gmail.com</p>
+                        <p class="text-xs text-slate/80 mt-1">Best for thoughtful notes or long-form collabs.</p>
+                    </div>
+                </a>
+                <a href="https://instagram.com/prashantchataut_" target="_blank" rel="noreferrer" class="group border-2 border-ivory p-5 flex items-center gap-4 hover:bg-punch hover:text-ink transition">
+                    <div class="h-12 w-12 border-2 border-current flex items-center justify-center font-mono">IG</div>
+                    <div>
+                        <p class="text-sm text-slate group-hover:text-ink">Instagram</p>
+                        <p class="text-xl font-semibold">@prashantchataut_</p>
+                        <p class="text-xs text-slate/80 mt-1">Ping me with quick questions or reactions.</p>
+                    </div>
+                </a>
+                <a href="https://github.com/prashantchataut" target="_blank" rel="noreferrer" class="group border-2 border-ivory p-5 flex items-center gap-4 hover:bg-cyber hover:text-ink transition">
+                    <div class="h-12 w-12 border-2 border-current flex items-center justify-center font-mono">GH</div>
+                    <div>
+                        <p class="text-sm text-slate group-hover:text-ink">GitHub</p>
+                        <p class="text-xl font-semibold">github.com/prashantchataut</p>
+                        <p class="text-xs text-slate/80 mt-1">Check my experiments or drop an issue.</p>
+                    </div>
+                </a>
+                <div class="border-2 border-ivory p-5 flex flex-col gap-3 bg-ink/80">
+                    <p class="text-sm font-mono text-slate">Signal</p>
+                    <p class="text-lg text-slate">Email: prashantchataut8@gmail.com</p>
+                    <p class="text-lg text-slate">Instagram: @prashantchataut_</p>
+                    <p class="text-lg text-slate">GitHub: prashantchataut</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t-4 border-ivory py-8 px-5 text-center text-sm text-slate">
+        <p>© 2025 Prashant Chataut</p>
+    </footer>
+
+    <script>
+        const animateTargets = document.querySelectorAll('[data-animate]');
+        const animateObserver = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('opacity-0', 'translate-y-8');
+                        animateObserver.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.2 }
+        );
+        animateTargets.forEach(el => {
+            el.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-700');
+            animateObserver.observe(el);
+        });
+
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sectionObserver = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    const id = entry.target.getAttribute('id');
+                    const link = document.querySelector(`.nav-link[data-section="${id}"]`);
+                    if (link) {
+                        if (entry.isIntersecting) {
+                            navLinks.forEach(l => l.classList.remove('nav-active'));
+                            link.classList.add('nav-active');
+                        }
+                    }
+                });
+            },
+            { threshold: 0.4 }
+        );
+        document.querySelectorAll('section[id]').forEach(section => sectionObserver.observe(section));
+
+        const neonToggle = document.createElement('div');
+        neonToggle.className = 'fixed bottom-5 right-5 px-4 py-2 border-2 border-ivory bg-ink text-ivory font-mono text-xs uppercase tracking-widest shadow-brutal';
+        neonToggle.textContent = 'Neon mode: OFF';
+        document.body.appendChild(neonToggle);
+
+        let neonActive = false;
+        const body = document.body;
+        function toggleNeon() {
+            neonActive = !neonActive;
+            body.classList.toggle('bg-grain', neonActive);
+            body.classList.toggle('shadow-neon', neonActive);
+            neonToggle.textContent = `Neon mode: ${neonActive ? 'ON' : 'OFF'}`;
+            neonToggle.classList.toggle('bg-acid', neonActive);
+            neonToggle.classList.toggle('text-ink', neonActive);
+        }
+        document.addEventListener('keydown', event => {
+            if (event.key.toLowerCase() === 'n') {
+                toggleNeon();
+            }
+        });
+        neonToggle.addEventListener('click', toggleNeon);
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', e => {
+                const target = document.querySelector(anchor.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        const quotes = [
+            { text: '“Waste no more time arguing what a good person should be. Be one.”', source: '— Marcus Aurelius' },
+            { text: '“Clarity comes from the questions you’re brave enough to ask.”', source: '— personal reminder' },
+            { text: '“Read deeply, disagree honestly, rebuild from what survives.”', source: '— note to self' }
+        ];
+        const quoteText = document.querySelector('[data-quote-text]');
+        const quoteSource = document.querySelector('[data-quote-source]');
+        const quoteIndicators = document.querySelectorAll('[data-quote-indicator]');
+        let quoteIndex = 0;
+
+        function renderQuote(index) {
+            if (!quoteText || !quoteSource) return;
+            const { text, source } = quotes[index % quotes.length];
+            quoteText.textContent = text;
+            quoteSource.textContent = source;
+            quoteIndicators.forEach((indicator, idx) => {
+                indicator.classList.toggle('bg-acid/50', idx === index % quotes.length);
+                indicator.classList.toggle('bg-ivory/20', idx !== index % quotes.length);
+            });
+        }
+
+        if (quoteText && quoteSource) {
+            renderQuote(quoteIndex);
+            setInterval(() => {
+                quoteIndex = (quoteIndex + 1) % quotes.length;
+                renderQuote(quoteIndex);
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
