@@ -121,11 +121,66 @@
         .card-face {
             backface-visibility: hidden;
         }
+        .card-hover {
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px) rotateX(1deg) rotateY(-1deg);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+        }
+        .vibe-orb {
+            position: fixed;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            filter: blur(30px);
+            opacity: 0.18;
+            z-index: 0;
+            pointer-events: none;
+            animation: vibePulse 14s ease-in-out infinite;
+        }
+        .vibe-orb-left {
+            top: 10vh;
+            left: -8rem;
+            background: radial-gradient(circle, rgba(201, 255, 15, 0.6), transparent 70%);
+        }
+        .vibe-orb-right {
+            bottom: 5vh;
+            right: -6rem;
+            background: radial-gradient(circle, rgba(0, 237, 255, 0.6), transparent 70%);
+        }
+        .vibe-ribbon {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background: conic-gradient(from 180deg at 50% 50%, rgba(0, 237, 255, 0.05), transparent 40%, rgba(201, 255, 15, 0.06));
+            mix-blend-mode: screen;
+            animation: ribbonShift 18s linear infinite;
+            opacity: 0.6;
+        }
+        @keyframes vibePulse {
+            0%, 100% { transform: scale(0.95); opacity: 0.14; }
+            50% { transform: scale(1.05); opacity: 0.22; }
+        }
+        @keyframes ribbonShift {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @media (max-width: 640px) {
+            .vibe-orb {
+                width: 180px;
+                height: 180px;
+                filter: blur(20px);
+            }
+        }
     </style>
 </head>
 <body class="bg-ink text-ivory relative overflow-x-hidden">
     <div class="noise-overlay"></div>
     <div class="fixed inset-0 pointer-events-none mix-blend-screen opacity-20 bg-gradient-to-br from-acid/20 via-transparent to-cyber/20"></div>
+    <div class="vibe-ribbon" aria-hidden="true"></div>
+    <span class="vibe-orb vibe-orb-left" data-parallax data-speed="0.2" aria-hidden="true"></span>
+    <span class="vibe-orb vibe-orb-right" data-parallax data-speed="-0.15" aria-hidden="true"></span>
 
     <header class="relative border-b-4 border-ivory/60">
         <nav class="max-w-6xl mx-auto px-4 sm:px-5 py-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -142,11 +197,12 @@
 
     <main id="top" class="max-w-6xl mx-auto px-4 sm:px-5 py-12 sm:py-16 space-y-16 sm:space-y-24">
         <section id="about" class="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] items-stretch">
-            <div class="p-6 sm:p-8 bg-ink/80 border-4 border-ivory shadow-brutal relative overflow-hidden transition-transform duration-300 hover:-translate-y-1" data-animate>
+            <div class="p-6 sm:p-8 bg-ink/80 border-4 border-ivory shadow-brutal relative overflow-hidden transition-transform duration-300 hover:-translate-y-1 card-hover" data-animate>
                 <div class="absolute -top-16 -right-16 w-48 h-48 bg-acid/40 blur-3xl rounded-full animate-float"></div>
                 <p class="font-mono text-sm uppercase tracking-[0.4em] text-slate">About Me</p>
+                <div class="inline-flex items-center gap-2 px-3 py-1 mt-3 border border-acid/70 text-xs font-mono tracking-[0.4em] text-acid/90 bg-ink/70">VIBE CODING LAB</div>
                 <h1 class="text-4xl sm:text-5xl font-bold mt-4 leading-tight">Prashant Chataut<br /><span class="text-acid">16 • Systems, code & design loops</span></h1>
-                <p class="mt-6 text-lg text-ivory/90">I like breaking big goals into simple systems that actually make sense in real life. I break down what matters into steps that actually fit real life, tweak what isn’t working, and keep refining until things feel right. NeverZero is my current project—a clean, steady way for my crew and me to stay on track and keep learning without the chaos.</p>
+                <p class="mt-6 text-lg text-ivory/90">I translate large goals into operating systems that can survive daily use. Every initiative gets decomposed into measurable loops, audited for weak signals, and iterated until it holds. NeverZero is the current focus—a disciplined routine that keeps my peers and me aligned without noise, and vibe coding is the craft that keeps the interfaces intuitive.</p>
                 <div class="mt-8 grid gap-4 sm:gap-6 md:grid-cols-2">
                     <div class="border-2 border-ivory p-4 bg-ink/90">
                         <p class="text-sm font-mono text-slate">Core Focus</p>
@@ -164,7 +220,7 @@
                     <span class="px-4 py-2 border-2 border-cyber text-cyber">Scroll for more ↓</span>
                 </div>
             </div>
-            <div class="border-4 border-ivory grid gap-4 p-6 bg-ink shadow-brutal" data-animate>
+            <div class="border-4 border-ivory grid gap-4 p-6 bg-ink shadow-brutal card-hover" data-animate>
                 <div class="relative overflow-hidden border-2 border-ivory p-6 bg-gradient-to-br from-ink via-ink to-cyber/20">
                     <p class="font-mono text-sm text-slate">Identity Card</p>
                     <h2 class="text-3xl font-bold mt-4">Prashant Chataut</h2>
@@ -179,9 +235,9 @@
                 <div class="border-2 border-ivory p-6 bg-ink space-y-4">
                     <p class="font-mono text-sm text-slate">Mantras</p>
                     <ul class="mt-4 space-y-3 text-lg">
-                        <li class="flex items-center gap-3"><span class="h-3 w-3 bg-acid"></span>I give my all, but I never forget to breathe along the way.</li>
-                        <li class="flex items-center gap-3"><span class="h-3 w-3 bg-punch"></span>I keep things light, but I still shape every moment with quiet intention.</li>
-                        <li class="flex items-center gap-3"><span class="h-3 w-3 bg-cyber"></span>I take my time, stay present, and shape things with care until they feel whole.</li>
+                        <li class="flex items-center gap-3"><span class="h-3 w-3 bg-acid"></span>Commit fully while protecting a sustainable cadence.</li>
+                        <li class="flex items-center gap-3"><span class="h-3 w-3 bg-punch"></span>Stay calm, stay deliberate, and document every decision.</li>
+                        <li class="flex items-center gap-3"><span class="h-3 w-3 bg-cyber"></span>Iterate until the system is reliable, not just interesting.</li>
                     </ul>
                     <div class="border-t border-ivory/40 pt-4">
                         <p class="font-mono text-xs uppercase tracking-widest text-slate">Quote log</p>
@@ -206,7 +262,7 @@
                 <p class="text-lg text-ivory/80">Grounded strengths shaped by reading, research, and building.</p>
             </div>
             <div class="grid gap-6 md:grid-cols-2">
-                <article class="border-4 border-ivory p-6 bg-ink/90 shadow-brutal transition-transform duration-300 hover:-translate-y-1">
+                <article class="border-4 border-ivory p-6 bg-ink/90 shadow-brutal transition-transform duration-300 hover:-translate-y-1 card-hover">
                     <header class="flex items-center justify-between">
                         <h3 class="text-2xl font-semibold">Code Architecture</h3>
                         <span class="px-3 py-1 bg-acid text-ink font-mono text-sm">Advanced</span>
@@ -216,17 +272,17 @@
                     </div>
                     <p class="text-slate">Prototype dashboards and logic flows, then refactor until the system feels inevitable.</p>
                 </article>
-                <article class="border-4 border-ivory p-6 bg-ink/90 shadow-brutal transition-transform duration-300 hover:-translate-y-1">
+                <article class="border-4 border-ivory p-6 bg-ink/90 shadow-brutal transition-transform duration-300 hover:-translate-y-1 card-hover">
                     <header class="flex items-center justify-between">
-                        <h3 class="text-2xl font-semibold">Analytical Science</h3>
-                        <span class="px-3 py-1 bg-cyber text-ink font-mono text-sm">Intermediate</span>
+                        <h3 class="text-2xl font-semibold">Vibe Coding</h3>
+                        <span class="px-3 py-1 bg-cyber text-ink font-mono text-sm">Proficient</span>
                     </header>
                     <div class="mt-4 h-3 bg-ivory/20 relative overflow-hidden">
-                        <span class="absolute inset-y-0 left-0 bg-cyber" style="width:70%"></span>
+                        <span class="absolute inset-y-0 left-0 bg-cyber" style="width:82%"></span>
                     </div>
-                    <p class="text-slate">Break physics and chemistry into modules, run experiments, and validate the model.</p>
+                    <p class="text-slate">Blend rhythm, typography, and micro-interactions to ship interfaces that feel alive yet measured.</p>
                 </article>
-                <article class="border-4 border-ivory p-6 bg-ink/90 shadow-brutal transition-transform duration-300 hover:-translate-y-1">
+                <article class="border-4 border-ivory p-6 bg-ink/90 shadow-brutal transition-transform duration-300 hover:-translate-y-1 card-hover">
                     <header class="flex items-center justify-between">
                         <h3 class="text-2xl font-semibold">Technical Communication</h3>
                         <span class="px-3 py-1 bg-punch text-ink font-mono text-sm">Intermediate</span>
@@ -248,7 +304,7 @@
                 </article>
             </div>
             <div class="grid md:grid-cols-3 gap-6" data-animate>
-                <article class="border-4 border-ivory p-5 bg-ink/90 shadow-brutal flex flex-col gap-3 transition-transform duration-300 hover:-translate-y-1">
+                <article class="border-4 border-ivory p-5 bg-ink/90 shadow-brutal flex flex-col gap-3 transition-transform duration-300 hover:-translate-y-1 card-hover">
                     <header class="flex items-center gap-3">
                         <span class="h-12 w-12 border-2 border-ivory flex items-center justify-center font-mono">HTML</span>
                         <div>
@@ -258,7 +314,7 @@
                     </header>
                     <p class="text-slate">HTML (Intermediate): I build semantic layouts for experiments like NeverZero.</p>
                 </article>
-                <article class="border-4 border-ivory p-5 bg-ink/90 shadow-brutal flex flex-col gap-3">
+                <article class="border-4 border-ivory p-5 bg-ink/90 shadow-brutal flex flex-col gap-3 card-hover">
                     <header class="flex items-center gap-3">
                         <span class="h-12 w-12 border-2 border-ivory flex items-center justify-center font-mono">CSS</span>
                         <div>
@@ -281,27 +337,27 @@
             </div>
         </section>
 
-        <section id="digs" class="space-y-6 border border-ivory sm:border-4 p-6 sm:p-8 bg-ink/90 shadow-brutal" data-animate>
+        <section id="digs" class="space-y-6 border border-ivory sm:border-4 p-6 sm:p-8 bg-ink/90 shadow-brutal card-hover" data-animate>
             <div class="flex flex-col gap-3">
                 <p class="font-mono text-sm uppercase tracking-[0.4em] text-slate">My Digs</p>
                 <h2 class="text-4xl font-semibold">Core Beliefs</h2>
                 <p class="text-lg text-slate">Little rules I use to keep energy high and momentum fun.</p>
             </div>
             <div class="grid gap-4 sm:grid-cols-3">
-                <article class="border-2 border-ivory p-5 bg-ink flex flex-col gap-2">
+                <article class="border-2 border-ivory p-5 bg-ink flex flex-col gap-2 card-hover">
                     <p class="font-mono text-xs text-slate tracking-[0.3em]">DIG 01</p>
-                    <h3 class="text-2xl font-semibold text-acid">13 is lucky</h3>
-                    <p class="text-slate">It’s the reset number—proof that a pattern only breaks if you show up.</p>
+                    <h3 class="text-2xl font-semibold text-acid">Systems beat hype</h3>
+                    <p class="text-slate">Consistent instrumentation and review cycles matter more than momentum speeches.</p>
                 </article>
                 <article class="border-2 border-ivory p-5 bg-ink flex flex-col gap-2">
                     <p class="font-mono text-xs text-slate tracking-[0.3em]">DIG 02</p>
-                    <h3 class="text-2xl font-semibold text-cyber">27 stays undefeated</h3>
-                    <p class="text-slate">Prime energy, prime timing. It’s the sweet spot for bold experiments.</p>
+                    <h3 class="text-2xl font-semibold text-cyber">Evidence precedes scale</h3>
+                    <p class="text-slate">Scope only increases when the metrics prove the foundation can handle it.</p>
                 </article>
                 <article class="border-2 border-ivory p-5 bg-ink flex flex-col gap-2">
                     <p class="font-mono text-xs text-slate tracking-[0.3em]">DIG 03</p>
-                    <h3 class="text-2xl font-semibold text-punch">Chaos is fuel</h3>
-                    <p class="text-slate">If a system feels too comfortable, I break it on purpose to see what survives.</p>
+                    <h3 class="text-2xl font-semibold text-punch">Constraint is a feature</h3>
+                    <p class="text-slate">Tighter boundaries surface better thinking and keep the team honest about tradeoffs.</p>
                 </article>
             </div>
         </section>
