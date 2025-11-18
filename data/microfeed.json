@@ -1,0 +1,72 @@
+{
+  "status": [
+    [
+      "Operational calm online",
+      "NeverZero checkpoints synced",
+      "Reading stack rotating weekly",
+      "Momentum score steady 87%"
+    ],
+    [
+      "Deep work surge detected",
+      "Weekly retro compiling now",
+      "Inbox zero preserved",
+      "Changelog shipping tonight"
+    ]
+  ],
+  "flux": [
+    [
+      "NeverZero prompts • 214 data points",
+      "Study loop latency • 11 mins",
+      "Reading backlog • 4 essays",
+      "Feedback queue • 3 peers"
+    ],
+    [
+      "Focus sprints • 5 active loops",
+      "Code reviews • 2 pending",
+      "Energy log • 93% green",
+      "Stack refresh • due Friday"
+    ]
+  ],
+  "momentum": [
+    {
+      "focusHours": {
+        "value": "34 / wk",
+        "description": "Deep work windows across Momentum Lab research and writing arcs.",
+        "delta": "+5 hrs vs last loop",
+        "progress": 0.85
+      },
+      "research": {
+        "value": "4 Active",
+        "description": "Signal reviews on philosophy, systems thinking, and interface craft.",
+        "delta": "3 micro-reports in queue",
+        "progress": 0.7
+      },
+      "build": {
+        "value": "32 Days",
+        "description": "Nightly utilities for NeverZero and vibe kit refreshes.",
+        "delta": "No misses in last 4 weeks",
+        "progress": 0.95
+      }
+    },
+    {
+      "focusHours": {
+        "value": "29 / wk",
+        "description": "Heavier shipping block, lighter reading windows this cycle.",
+        "delta": "-2 hrs vs last loop",
+        "progress": 0.72
+      },
+      "research": {
+        "value": "2 Active",
+        "description": "One philosophy brief and one interface teardown in progress.",
+        "delta": "New backlog forming",
+        "progress": 0.45
+      },
+      "build": {
+        "value": "18 Days",
+        "description": "Porting NeverZero components into the study dashboard.",
+        "delta": "+6 QA todos captured",
+        "progress": 0.6
+      }
+    }
+  ]
+}
