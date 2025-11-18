@@ -97,13 +97,227 @@
             opacity: 0.25;
             animation: grainMove 6s steps(10) infinite;
         }
+        .ambient-grid {
+            pointer-events: none;
+            position: fixed;
+            inset: 0;
+            background-image: linear-gradient(rgba(201, 255, 15, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 237, 255, 0.08) 1px, transparent 1px);
+            background-size: 160px 160px;
+            opacity: 0.08;
+            mix-blend-mode: soft-light;
+            animation: gridDrift 32s linear infinite;
+            z-index: 0;
+        }
+        .scanlines {
+            pointer-events: none;
+            position: fixed;
+            inset: 0;
+            background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.05) 0px, rgba(255, 255, 255, 0.05) 1px, transparent 1px, transparent 3px);
+            opacity: 0.06;
+            mix-blend-mode: soft-light;
+            z-index: 0;
+        }
+        .nav-scroller {
+            display: flex;
+            gap: 0.75rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x proximity;
+            padding-bottom: 0.35rem;
+        }
+        .nav-scroller::-webkit-scrollbar {
+            display: none;
+        }
         .nav-link {
-            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+            border: 1px solid rgba(242, 242, 242, 0.6);
+            border-radius: 999px;
+            padding: 0.55rem 1.15rem;
+            font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular;
+            font-size: 0.75rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: rgba(242, 242, 242, 0.85);
+            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+            scroll-snap-align: start;
+            flex: 0 0 auto;
+            text-align: center;
+        }
+        .nav-link:hover {
+            background-color: rgba(201, 255, 15, 0.18);
+            color: #f2f2f2;
+            border-color: #c9ff0f;
+            transform: translateY(-2px);
         }
         .nav-active {
             background-color: #c9ff0f;
             color: #0d0d0d;
             border-color: #c9ff0f;
+        }
+        .status-ticker {
+            border-top: 1px solid rgba(242, 242, 242, 0.2);
+            border-bottom: 1px solid rgba(242, 242, 242, 0.2);
+            background: rgba(13, 13, 13, 0.8);
+            overflow: hidden;
+        }
+        .status-ticker .ticker-track,
+        .flux-ticker .ticker-track {
+            display: flex;
+            gap: 3rem;
+            width: max-content;
+            animation: tickerSlide 22s linear infinite;
+        }
+        .ticker-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular;
+            font-size: 0.74rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: rgba(242, 242, 242, 0.78);
+        }
+        .pulse-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 9999px;
+            background: #c9ff0f;
+            box-shadow: 0 0 12px rgba(201, 255, 15, 0.6);
+            animation: pulse 1.8s ease-in-out infinite;
+        }
+        .flux-ticker {
+            border: 1px solid rgba(242, 242, 242, 0.25);
+            background: rgba(13, 13, 13, 0.65);
+            padding: 0.85rem 1.25rem;
+            overflow: hidden;
+        }
+        .flux-badge {
+            font-size: 0.7rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: #0d0d0d;
+            background: #c9ff0f;
+            padding: 0.35rem 0.9rem;
+            font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular;
+        }
+        .device-frame {
+            position: relative;
+            border-radius: 32px;
+            padding: 1.25rem;
+            border: 1px solid rgba(242, 242, 242, 0.35);
+            background: radial-gradient(circle at top, rgba(255, 255, 255, 0.05), rgba(8, 8, 12, 0.95));
+            box-shadow: inset 0 -20px 50px rgba(0, 0, 0, 0.4), 0 20px 60px rgba(0, 0, 0, 0.45);
+            color: #f2f2f2;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+            overflow: hidden;
+            width: 100%;
+            max-width: 360px;
+            margin-inline: auto;
+        }
+        .device-notch {
+            width: 120px;
+            height: 16px;
+            background: rgba(12, 12, 20, 0.8);
+            border-radius: 999px;
+            align-self: center;
+            margin-bottom: 0.6rem;
+        }
+        .device-card {
+            border-radius: 20px;
+            padding: 0.85rem 1rem;
+            background: rgba(8, 8, 12, 0.8);
+            border: 1px solid rgba(242, 242, 242, 0.08);
+        }
+        .work-chip {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.35rem 0.9rem;
+            border: 1px solid rgba(242, 242, 242, 0.25);
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+        }
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.85rem;
+        }
+        .preview-card {
+            border-radius: 14px;
+            padding: 0.85rem;
+            border: 1px solid rgba(242, 242, 242, 0.22);
+            background: radial-gradient(circle at top, rgba(201, 255, 15, 0.1), transparent 60%), rgba(8, 8, 12, 0.85);
+            min-height: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .preview-card p {
+            font-size: 0.8rem;
+            color: rgba(242, 242, 242, 0.78);
+        }
+        .signal-track {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px dashed rgba(242, 242, 242, 0.25);
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .signal-node {
+            position: relative;
+            padding: 1rem 1.25rem 1rem 1.5rem;
+            border: 1px solid rgba(242, 242, 242, 0.35);
+            background: rgba(13, 13, 13, 0.78);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .signal-node::before {
+            content: '';
+            position: absolute;
+            left: -2.35rem;
+            top: 1rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 9999px;
+            background: #c9ff0f;
+            box-shadow: 0 0 18px rgba(201, 255, 15, 0.6);
+        }
+        .signal-node:hover {
+            transform: translateX(8px);
+            border-color: #c9ff0f;
+        }
+        .signal-meta {
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: rgba(242, 242, 242, 0.7);
+            font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular;
+        }
+        .loop-card {
+            border: 1px solid rgba(242, 242, 242, 0.35);
+            background: rgba(13, 13, 13, 0.78);
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+            transition: border-color 0.4s ease, transform 0.35s ease;
+        }
+        .loop-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top, rgba(201, 255, 15, 0.2), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            z-index: -1;
+        }
+        .loop-card:hover {
+            border-color: #c9ff0f;
+            transform: translateY(-6px);
+        }
+        .loop-card:hover::before {
+            opacity: 1;
         }
         @keyframes grainMove {
             0% { transform: translate(0, 0); }
@@ -166,36 +380,104 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        @keyframes gridDrift {
+            0% { transform: translate3d(0, 0, 0); }
+            50% { transform: translate3d(-5%, -5%, 0); }
+            100% { transform: translate3d(0, 0, 0); }
+        }
+        @keyframes tickerSlide {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; transform: scale(0.85); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
         @media (max-width: 640px) {
             .vibe-orb {
                 width: 180px;
                 height: 180px;
                 filter: blur(20px);
             }
+            .nav-scroller {
+                justify-content: flex-start;
+            }
+            .nav-link {
+                font-size: 0.68rem;
+                letter-spacing: 0.2em;
+                padding: 0.5rem 0.95rem;
+                min-width: 110px;
+            }
+            .device-frame {
+                border-radius: 24px;
+                padding: 1rem;
+            }
+            .border-4 {
+                border-width: 2px;
+            }
+            .border-2 {
+                border-width: 1.5px;
+            }
+            .shadow-brutal {
+                box-shadow: 6px 6px 0 rgba(242, 242, 242, 0.18);
+            }
+            .status-ticker {
+                padding-inline: 1rem;
+            }
+            .status-ticker .ticker-track,
+            .flux-ticker .ticker-track {
+                gap: 1.5rem;
+            }
+            .ticker-chip {
+                font-size: 0.62rem;
+                letter-spacing: 0.25em;
+            }
+        }
+        @media (min-width: 640px) {
+            .nav-scroller {
+                justify-content: flex-end;
+                flex-wrap: wrap;
+                overflow: visible;
+                gap: 1rem;
+            }
+            .nav-link {
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
 <body class="bg-ink text-ivory relative overflow-x-hidden">
     <div class="noise-overlay"></div>
+    <div class="ambient-grid" aria-hidden="true"></div>
+    <div class="scanlines" aria-hidden="true"></div>
     <div class="fixed inset-0 pointer-events-none mix-blend-screen opacity-20 bg-gradient-to-br from-acid/20 via-transparent to-cyber/20"></div>
     <div class="vibe-ribbon" aria-hidden="true"></div>
     <span class="vibe-orb vibe-orb-left" data-parallax data-speed="0.2" aria-hidden="true"></span>
     <span class="vibe-orb vibe-orb-right" data-parallax data-speed="-0.15" aria-hidden="true"></span>
 
-    <header class="relative border-b-4 border-ivory/60">
+    <header class="relative z-10 border-b-4 border-ivory/60">
         <nav class="max-w-6xl mx-auto px-4 sm:px-5 py-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <a href="#top" class="text-2xl font-semibold tracking-wide hover:text-acid transition-colors text-center sm:text-left">PRASHANT//16</a>
-            <div class="grid grid-cols-2 sm:flex w-full sm:w-auto gap-2 sm:gap-3 text-xs sm:text-sm font-mono uppercase tracking-[0.2em] sm:tracking-wider">
-                <a href="#about" data-section="about" class="nav-link w-full text-center px-3 py-2 border border-ivory sm:border-2 hover:bg-acid hover:text-ink transition-transform duration-200 hover:-translate-y-0.5">About</a>
-                <a href="#skills" data-section="skills" class="nav-link w-full text-center px-3 py-2 border border-ivory sm:border-2 hover:bg-punch hover:text-ink transition-transform duration-200 hover:-translate-y-0.5">Skills</a>
-                <a href="#projects" data-section="projects" class="nav-link w-full text-center px-3 py-2 border border-ivory sm:border-2 hover:bg-cyber hover:text-ink transition-transform duration-200 hover:-translate-y-0.5">Projects</a>
-                <a href="#contact" data-section="contact" class="nav-link w-full text-center px-3 py-2 border border-ivory sm:border-2 hover:bg-ivory hover:text-ink transition-transform duration-200 hover:-translate-y-0.5">Contact</a>
+            <div class="nav-scroller">
+                <a href="#about" data-section="about" class="nav-link">About</a>
+                <a href="#works" data-section="works" class="nav-link">My Works</a>
+                <a href="#skills" data-section="skills" class="nav-link">Skills</a>
+                <a href="#projects" data-section="projects" class="nav-link">Projects</a>
+                <a href="#contact" data-section="contact" class="nav-link">Contact</a>
             </div>
         </nav>
+        <div class="status-ticker" aria-live="polite">
+            <div class="ticker-track px-4 py-3">
+                <span class="ticker-chip"><span class="pulse-dot" aria-hidden="true"></span>Operational calm online</span>
+                <span class="ticker-chip"><span class="pulse-dot" aria-hidden="true"></span>NeverZero checkpoints synced</span>
+                <span class="ticker-chip"><span class="pulse-dot" aria-hidden="true"></span>Reading stack rotating weekly</span>
+                <span class="ticker-chip"><span class="pulse-dot" aria-hidden="true"></span>Momentum score steady 87%</span>
+            </div>
+        </div>
         <div class="absolute inset-x-0 bottom-0 h-2 bg-[repeating-linear-gradient(90deg,#f2f2f2_0_40px,#0d0d0d_40px_80px,#00edff_80px_120px)] animate-pulseDash"></div>
     </header>
 
-    <main id="top" class="max-w-6xl mx-auto px-4 sm:px-5 py-12 sm:py-16 space-y-16 sm:space-y-24">
+    <main id="top" class="relative z-10 max-w-6xl mx-auto px-4 sm:px-5 py-10 sm:py-16 space-y-12 sm:space-y-24">
         <section id="about" class="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] items-stretch">
             <div class="p-6 sm:p-8 bg-ink/80 border-4 border-ivory shadow-brutal relative overflow-hidden transition-transform duration-300 hover:-translate-y-1 card-hover" data-animate>
                 <div class="absolute -top-16 -right-16 w-48 h-48 bg-acid/40 blur-3xl rounded-full animate-float"></div>
@@ -251,6 +533,228 @@
                             <span class="h-1 w-6 bg-ivory/20" data-quote-indicator="2"></span>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="works" class="space-y-8 border border-ivory sm:border-4 p-6 sm:p-8 bg-ink/90 shadow-brutal card-hover" data-animate>
+            <div class="flex flex-col gap-3">
+                <p class="font-mono text-sm uppercase tracking-[0.4em] text-slate">Build Log</p>
+                <h2 class="text-4xl font-semibold">My Works</h2>
+                <p class="text-lg text-ivory/80">Drop-ready space for apps, products, and experiments—each card can carry screenshots plus download or case-study links the moment they ship.</p>
+            </div>
+            <div class="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+                <article class="border-4 border-ivory p-6 bg-ink/85 shadow-brutal flex flex-col gap-6">
+                    <header class="space-y-2">
+                        <p class="font-mono text-xs uppercase tracking-[0.4em] text-slate">Drop 01</p>
+                        <h3 class="text-3xl font-semibold">NeverZero Habit OS</h3>
+                        <p class="text-slate">Never Zero is a personal consistency companion for small, meaningful actions. It removes pressure and harsh discipline so showing up feels light—one page read, one word learned, one sentence shipped is enough to keep momentum alive.</p>
+                        <p class="text-slate">Track habits, build streaks, and stay grounded through a minimal, distraction-free interface that supports learning, creating, or any routine. Every feature is designed to encourage sustainable improvement so the rule stays simple: keep moving, never drop to zero.</p>
+                    </header>
+                    <dl class="grid sm:grid-cols-3 gap-4 text-sm font-mono uppercase tracking-[0.25em] text-slate">
+                        <div>
+                            <dt class="text-ivory/60">Stage</dt>
+                            <dd class="text-ivory text-base tracking-normal">Beta flight</dd>
+                        </div>
+                        <div>
+                            <dt class="text-ivory/60">Platform</dt>
+                            <dd class="text-ivory text-base tracking-normal">iOS · Android</dd>
+                        </div>
+                        <div>
+                            <dt class="text-ivory/60">Status</dt>
+                            <dd class="text-ivory text-base tracking-normal">Weekly drops</dd>
+                        </div>
+                    </dl>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="https://example.com/neverzero-download" target="_blank" rel="noreferrer" class="px-4 py-3 border-2 border-acid text-acid font-semibold hover:bg-acid hover:text-ink transition">Download build</a>
+                        <a href="https://github.com/prashantchataut/NeverZero" target="_blank" rel="noreferrer" class="px-4 py-3 border-2 border-ivory text-ivory font-semibold hover:bg-ivory hover:text-ink transition">View repo</a>
+                    </div>
+                    <div class="flex flex-wrap gap-2 text-xs font-mono uppercase tracking-[0.3em] text-slate">
+                        <span class="work-chip border-acid/40 text-acid">Habits</span>
+                        <span class="work-chip border-cyber/40 text-cyber">Dashboards</span>
+                        <span class="work-chip border-punch/40 text-punch">Community</span>
+                    </div>
+                    <div class="preview-grid">
+                        <div class="preview-card">
+                            <p class="text-xs font-mono uppercase tracking-[0.35em] text-acid">Loops</p>
+                            <p>Daily stack view highlights streak health and next-step prompts.</p>
+                            <span class="text-xs font-mono text-slate">v0.8 — Rhythm pass</span>
+                        </div>
+                        <div class="preview-card" style="background: radial-gradient(circle at top, rgba(0, 237, 255, 0.15), transparent 60%), rgba(8, 8, 12, 0.85);">
+                            <p class="text-xs font-mono uppercase tracking-[0.35em] text-cyber">Analytics</p>
+                            <p>Velocity board charts streaks, completion %, and peer leaderboard.</p>
+                            <span class="text-xs font-mono text-slate">v0.8 — Insight kit</span>
+                        </div>
+                        <div class="preview-card" style="background: radial-gradient(circle at top, rgba(255, 95, 69, 0.15), transparent 60%), rgba(8, 8, 12, 0.85);">
+                            <p class="text-xs font-mono uppercase tracking-[0.35em] text-punch">Community</p>
+                            <p>Challenges and story capsules surface accountability partners.</p>
+                            <span class="text-xs font-mono text-slate">v0.8 — Social sync</span>
+                        </div>
+                    </div>
+                </article>
+                <div class="grid gap-4 sm:grid-cols-2">
+                    <figure class="device-frame" aria-labelledby="neverzero-shot-1">
+                        <div class="device-notch" aria-hidden="true"></div>
+                        <figcaption id="neverzero-shot-1" class="sr-only">NeverZero onboarding emphasizing habit list and inspiration card.</figcaption>
+                        <p class="text-center text-lg font-semibold">Build Habits That Last.</p>
+                        <div class="space-y-3">
+                            <div class="device-card">
+                                <p class="text-sm text-ivory/70">Active Habits</p>
+                                <div class="mt-3 space-y-2">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="font-semibold">Read 20 Pages</p>
+                                            <p class="text-xs text-ivory/60">Streak: 14 days</p>
+                                        </div>
+                                        <span class="px-2 py-1 text-xs bg-[#1c2234] rounded-full">85%</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="font-semibold">Morning Run</p>
+                                            <p class="text-xs text-ivory/60">Streak: 8 days</p>
+                                        </div>
+                                        <span class="px-2 py-1 text-xs bg-[#1c2234] rounded-full">60%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="device-card">
+                                <p class="text-sm text-ivory/70">Daily Inspiration</p>
+                                <p class="text-sm mt-2">“We are what we repeatedly do. Excellence, then, is not an act, but a habit.”</p>
+                                <p class="text-xs text-ivory/50 mt-2">— Will Durant</p>
+                            </div>
+                        </div>
+                    </figure>
+                    <figure class="device-frame" aria-labelledby="neverzero-shot-2">
+                        <div class="device-notch" aria-hidden="true"></div>
+                        <figcaption id="neverzero-shot-2" class="sr-only">NeverZero analytics view with streaks and leaderboard.</figcaption>
+                        <p class="text-center text-lg font-semibold">Track Your Progress</p>
+                        <div class="device-card bg-gradient-to-b from-[#b5c8ff]/20 to-transparent">
+                            <p class="text-xs text-ivory/60">Current Streak</p>
+                            <p class="text-3xl font-bold">42 Days</p>
+                            <p class="text-xs text-ivory/60 mt-2">Completion Rate</p>
+                            <p class="text-3xl font-bold">92%</p>
+                        </div>
+                        <div class="device-card">
+                            <p class="text-sm text-ivory/70">Habit Consistency</p>
+                            <div class="mt-3 h-24 bg-gradient-to-r from-transparent via-[#00edff]/40 to-transparent rounded-lg flex items-center justify-center text-sm text-ivory/60">7-day momentum graph</div>
+                        </div>
+                        <div class="device-card">
+                            <p class="text-sm text-ivory/70 mb-2">Weekly Leaderboard</p>
+                            <ol class="space-y-1 text-sm">
+                                <li class="flex justify-between"><span>Prashant Chataut</span><span>2713 pts</span></li>
+                                <li class="flex justify-between"><span>Jessica Wu</span><span>1190 pts</span></li>
+                                <li class="flex justify-between"><span>David Smith</span><span>1150 pts</span></li>
+                            </ol>
+                        </div>
+                    </figure>
+                    <figure class="device-frame sm:col-span-2" aria-labelledby="neverzero-shot-3">
+                        <div class="device-notch" aria-hidden="true"></div>
+                        <figcaption id="neverzero-shot-3" class="sr-only">NeverZero discovery feed featuring challenges and stories.</figcaption>
+                        <div class="flex items-center justify-between">
+                            <p class="text-lg font-semibold">Never Zero</p>
+                            <span class="px-3 py-1 text-xs bg-[#1c1930] rounded-full">Quote of the Day</span>
+                        </div>
+                        <div class="device-card">
+                            <p class="text-xs text-ivory/60">“The secret of getting ahead is getting started.”</p>
+                            <p class="text-xs text-ivory/40 mt-1">— Mark Twain</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="device-card bg-gradient-to-br from-[#2d1b49]/40 to-transparent">
+                                <p class="text-sm font-semibold">7-Day Digital Detox</p>
+                                <p class="text-xs text-ivory/60 mt-1">Disconnect to reconnect</p>
+                            </div>
+                            <div class="device-card bg-gradient-to-br from-[#14264c]/40 to-transparent">
+                                <p class="text-sm font-semibold">30 Days of Mindfulness</p>
+                                <p class="text-xs text-ivory/60 mt-1">Find your inner calm</p>
+                            </div>
+                        </div>
+                        <div class="device-card">
+                            <p class="text-sm font-semibold mb-1">Community Stories</p>
+                            <p class="text-xs text-ivory/60">“Never thought I could run more than a minute, but this app kept my loop honest.”</p>
+                        </div>
+                    </figure>
+                </div>
+            </div>
+            <div class="border border-dashed border-ivory/40 p-4 sm:p-6 flex flex-col gap-3 bg-ink/70 max-w-4xl mx-auto">
+                <p class="font-mono text-xs uppercase tracking-[0.4em] text-slate">Future Slot</p>
+                <p class="text-lg text-ivory/80">Drop the next tool, plugin, or kit here—add screenshots, platform badges, and a download link when it’s live.</p>
+                <button class="self-start px-4 py-2 border-2 border-ivory text-ivory font-semibold hover:bg-ivory hover:text-ink transition">Reserve slot</button>
+            </div>
+        </section>
+
+        <section id="signal" class="space-y-8 border border-ivory sm:border-4 p-6 sm:p-8 bg-ink/85 shadow-brutal card-hover" data-animate>
+            <div class="flex flex-col gap-3">
+                <p class="font-mono text-sm uppercase tracking-[0.4em] text-slate">Now Signal</p>
+                <h2 class="text-4xl font-semibold">Operating Broadcast</h2>
+                <p class="text-lg text-ivory/80">Tiny transmissions logged as the systems evolve in real time.</p>
+            </div>
+            <ol class="signal-track">
+                <li class="signal-node">
+                    <p class="signal-meta">Nov 18 · 07:20</p>
+                    <h3 class="text-2xl font-semibold mt-2">Blueprint review sprint complete</h3>
+                    <p class="text-slate mt-2">Documented the NeverZero audit kit—loop friction now tagged with priority heat.</p>
+                </li>
+                <li class="signal-node">
+                    <p class="signal-meta">Nov 17 · 21:40</p>
+                    <h3 class="text-2xl font-semibold mt-2">Reading stack rotation</h3>
+                    <p class="text-slate mt-2">Swapped in systems essays from Stafford Beer to cross-train pattern recognition.</p>
+                </li>
+                <li class="signal-node">
+                    <p class="signal-meta">Nov 16 · 05:50</p>
+                    <h3 class="text-2xl font-semibold mt-2">Interface experiments shipped</h3>
+                    <p class="text-slate mt-2">Tested hover kinetics for NeverZero’s dashboard tiles and logged delta notes.</p>
+                </li>
+            </ol>
+        </section>
+
+        <section id="loops" class="space-y-8 border border-ivory sm:border-4 p-6 sm:p-8 bg-ink/85 shadow-brutal card-hover" data-animate>
+            <div class="flex flex-col gap-3">
+                <p class="font-mono text-sm uppercase tracking-[0.4em] text-slate">Live Loops</p>
+                <h2 class="text-4xl font-semibold">Momentum Console</h2>
+                <p class="text-lg text-ivory/80">Snapshots from the operating cadence that keeps the room energized.</p>
+            </div>
+            <div class="grid gap-4 md:grid-cols-3">
+                <article class="loop-card p-5">
+                    <p class="text-xs font-mono tracking-[0.4em] text-slate">Focus Hours</p>
+                    <h3 class="text-3xl font-semibold mt-3">32 / wk</h3>
+                    <p class="text-slate mt-2">Deep work windows split between Momentum Lab research and writing arcs.</p>
+                    <div class="mt-5">
+                        <div class="h-1.5 bg-ivory/10 overflow-hidden">
+                            <span class="block h-full bg-acid" style="width:80%"></span>
+                        </div>
+                        <p class="text-xs font-mono tracking-[0.35em] text-slate mt-2">+4 hrs vs last loop</p>
+                    </div>
+                </article>
+                <article class="loop-card p-5">
+                    <p class="text-xs font-mono tracking-[0.4em] text-slate">Research Sprints</p>
+                    <h3 class="text-3xl font-semibold mt-3">3 Active</h3>
+                    <p class="text-slate mt-2">Signal reviews on philosophy, systems thinking, and interface craft.</p>
+                    <div class="mt-5">
+                        <div class="h-1.5 bg-ivory/10 overflow-hidden">
+                            <span class="block h-full bg-cyber" style="width:60%"></span>
+                        </div>
+                        <p class="text-xs font-mono tracking-[0.35em] text-slate mt-2">2 micro-reports in queue</p>
+                    </div>
+                </article>
+                <article class="loop-card p-5">
+                    <p class="text-xs font-mono tracking-[0.4em] text-slate">Build Streak</p>
+                    <h3 class="text-3xl font-semibold mt-3">27 Days</h3>
+                    <p class="text-slate mt-2">Shipping tiny utilities for NeverZero and refreshing the vibe kit nightly.</p>
+                    <div class="mt-5">
+                        <div class="h-1.5 bg-ivory/10 overflow-hidden">
+                            <span class="block h-full bg-punch" style="width:90%"></span>
+                        </div>
+                        <p class="text-xs font-mono tracking-[0.35em] text-slate mt-2">Maintaining calm momentum</p>
+                    </div>
+                </article>
+            </div>
+            <div class="flux-ticker rounded-sm">
+                <div class="ticker-track items-center">
+                    <span class="flux-badge">Now tracking</span>
+                    <span class="ticker-chip">NeverZero prompts • 214 data points</span>
+                    <span class="ticker-chip">Study loop latency • 11 mins</span>
+                    <span class="ticker-chip">Reading backlog • 4 essays</span>
+                    <span class="ticker-chip">Feedback queue • 3 peers</span>
                 </div>
             </div>
         </section>
@@ -435,7 +939,7 @@
         </section>
     </main>
 
-    <footer class="border-t-4 border-ivory py-8 px-5 text-center text-sm text-slate">
+    <footer class="relative z-10 border-t-4 border-ivory py-8 px-5 text-center text-sm text-slate">
         <p>© 2025 Prashant Chataut</p>
     </footer>
 
@@ -475,8 +979,28 @@
         );
         document.querySelectorAll('section[id]').forEach(section => sectionObserver.observe(section));
 
+        const parallaxTargets = document.querySelectorAll('[data-parallax]');
+        let mouse = { x: 0, y: 0 };
+        document.addEventListener('pointermove', event => {
+            mouse.x = event.clientX / window.innerWidth - 0.5;
+            mouse.y = event.clientY / window.innerHeight - 0.5;
+        });
+        function renderParallax() {
+            parallaxTargets.forEach(el => {
+                const speed = parseFloat(el.dataset.speed || '0.2');
+                const translateX = mouse.x * speed * 60;
+                const translateY = mouse.y * speed * 60;
+                el.style.transform = `translate(${translateX}px, ${translateY}px)`;
+            });
+            requestAnimationFrame(renderParallax);
+        }
+        if (parallaxTargets.length) {
+            renderParallax();
+        }
+
         const neonToggle = document.createElement('div');
         neonToggle.className = 'fixed bottom-5 right-5 px-4 py-2 border-2 border-ivory bg-ink text-ivory font-mono text-xs uppercase tracking-widest shadow-brutal';
+        neonToggle.style.zIndex = '50';
         neonToggle.textContent = 'Neon mode: OFF';
         document.body.appendChild(neonToggle);
 
