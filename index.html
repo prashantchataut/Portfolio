@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="index,follow" />
     <meta name="author" content="Prashant Chataut" />
+    <meta name="application-name" content="NeverZero Portfolio" />
     <title>Prashant Chataut — Neobrutalist Portfolio</title>
     <meta name="description" content="Neobrutalist portfolio for Prashant Chataut, a 16-year-old thinker who blends philosophy, study systems, and writing." />
     <meta name="keywords" content="Prashant Chataut, NeverZero, systems builder, habit apps, vibe coding" />
@@ -16,10 +17,13 @@
     <meta property="og:url" content="https://github.com/prashantchataut" />
     <meta property="og:image" content="https://github.com/prashantchataut.png" />
     <meta property="og:site_name" content="Prashant Chataut Portfolio" />
+    <meta property="og:locale" content="en_US" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Prashant Chataut — Portfolio" />
     <meta name="twitter:description" content="Philosophy, writing, and deliberate learning powering the NeverZero mindset." />
     <meta name="twitter:image" content="https://github.com/prashantchataut.png" />
+    <meta name="twitter:site" content="@prashantchataut_" />
+    <meta name="twitter:creator" content="@prashantchataut_" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%230d0d0d'/%3E%3Ctext x='32' y='42' font-size='34' text-anchor='middle' fill='%23c9ff0f' font-family='Space Grotesk'%3EP%3C/text%3E%3C/svg%3E" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -112,6 +116,36 @@
                     "target": "https://www.google.com/search?q=Prashant+Chataut+{search_term_string}",
                     "query-input": "required name=search_term_string"
                 }
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "What is NeverZero Habit OS?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "NeverZero Habit OS is a consistency system I designed to help students and builders log micro-habits, surface velocity insights, and keep momentum without burnout."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How does vibe coding influence your interfaces?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Vibe coding is my blend of bold typography, motion, and systems thinking to ensure every interaction feels deliberate, legible, and calm across devices."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can I collaborate on research-backed products?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes. I partner with peers on research-heavy products where we can map loops, wire analytics early, and document decisions for future scale."
+                        }
+                    }
+                ]
             }
         ]
     </script>
@@ -660,6 +694,7 @@
     </script>
 </head>
 <body class="bg-ink text-ivory relative overflow-x-hidden">
+    <a class="skip-link" href="#about">Skip to main content</a>
     <div class="noise-overlay"></div>
     <div class="ambient-grid" aria-hidden="true"></div>
     <div class="scanlines" aria-hidden="true"></div>
@@ -679,6 +714,7 @@
                 <a href="#works" data-section="works" class="nav-link">My Works</a>
                 <a href="#skills" data-section="skills" class="nav-link">Skills</a>
                 <a href="#projects" data-section="projects" class="nav-link">Projects</a>
+                <a href="#faq" data-section="faq" class="nav-link">FAQ</a>
                 <a href="#contact" data-section="contact" class="nav-link">Contact</a>
             </div>
         </nav>
@@ -942,6 +978,29 @@
                     <p class="text-xs text-slate" data-quiz-hint>Pick an option to help Prashant focus.</p>
                 </article>
             </div>
+        </section>
+
+        <section id="faq" class="space-y-6 border border-ivory sm:border-4 p-6 sm:p-8 bg-ink/90 shadow-brutal card-hover" data-animate data-delay="0.2s" role="region" aria-labelledby="faq-heading">
+            <div class="flex flex-col gap-3">
+                <p class="font-mono text-sm uppercase tracking-[0.4em] text-slate">Search Boost</p>
+                <h2 id="faq-heading" class="text-4xl font-semibold">Frequently Asked Questions</h2>
+                <p class="text-lg text-ivory/80">Clear answers for people searching "Prashant Chataut", "NeverZero Habit OS", or "vibe coding systems builder".</p>
+            </div>
+            <dl class="space-y-5">
+                <div class="border-2 border-ivory p-5 bg-ink">
+                    <dt class="text-2xl font-semibold">What is NeverZero Habit OS?</dt>
+                    <dd class="mt-3 text-slate">NeverZero is my flagship habit platform that translates routines into measurable loops. It keeps streaks alive with respectful nudges, streak analytics, and accountability capsules so students and builders never drop to zero momentum.</dd>
+                </div>
+                <div class="border-2 border-ivory p-5 bg-ink">
+                    <dt class="text-2xl font-semibold">How does vibe coding shape your products?</dt>
+                    <dd class="mt-3 text-slate">Vibe coding blends modern brutalism, typography, and intentional motion. Every interface is prototyped in small systems, user-tested, and tuned for speed so it feels smooth on low-power devices.</dd>
+                </div>
+                <div class="border-2 border-ivory p-5 bg-ink">
+                    <dt class="text-2xl font-semibold">Can we collaborate on research-backed products?</dt>
+                    <dd class="mt-3 text-slate">Absolutely. I partner on research-heavy apps, study systems, and community platforms where we can map metrics on day one, keep documentation tight, and scale only after evidence proves the loop is resilient.</dd>
+                </div>
+            </dl>
+            <a href="#contact" class="inline-flex items-center gap-3 px-5 py-3 border-2 border-acid text-acid font-semibold hover:bg-acid hover:text-ink transition" aria-label="Jump to contact section from FAQ">Discuss your build</a>
         </section>
 
         <section id="skills" class="space-y-10" data-animate role="region" aria-labelledby="skills-heading">
