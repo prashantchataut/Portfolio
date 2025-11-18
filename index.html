@@ -81,6 +81,21 @@
             },
         };
     </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Prashant Chataut",
+            "description": "16-year-old systems builder crafting code-led study systems and interfaces.",
+            "url": "https://prashantchataut.vercel.app",
+            "image": "https://github.com/prashantchataut.png",
+            "jobTitle": "Systems Builder",
+            "sameAs": [
+                "https://github.com/prashantchataut",
+                "https://instagram.com/prashantchataut_"
+            ]
+        }
+    </script>
     <style>
         body {
             font-family: 'Space Grotesk', system-ui, sans-serif;
@@ -118,6 +133,48 @@
             mix-blend-mode: soft-light;
             z-index: 0;
         }
+        :root {
+            color-scheme: dark;
+        }
+        body.neon-mode {
+            background-image: radial-gradient(circle at 15% 15%, rgba(201, 255, 15, 0.15), transparent 40%),
+                radial-gradient(circle at 80% 0%, rgba(0, 237, 255, 0.15), transparent 35%),
+                linear-gradient(120deg, rgba(17, 17, 17, 0.95), rgba(25, 25, 25, 0.9));
+            color: #f8fffb;
+        }
+        body.neon-mode .card-hover,
+        body.neon-mode .loop-card,
+        body.neon-mode .device-frame,
+        body.neon-mode .preview-card,
+        body.neon-mode .signal-node,
+        body.neon-mode .flux-ticker,
+        body.neon-mode .status-ticker {
+            border-color: rgba(201, 255, 15, 0.6);
+            box-shadow: 0 0 35px rgba(0, 237, 255, 0.35);
+        }
+        body.neon-mode .nav-link:not(.nav-active) {
+            border-color: rgba(0, 237, 255, 0.6);
+            color: #00edff;
+        }
+        body.neon-mode .ticker-chip {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        body.neon-mode .work-chip {
+            border-color: rgba(0, 237, 255, 0.5);
+            color: #00edff;
+        }
+        body.neon-mode .cta-button {
+            background-color: #0d0d0d;
+            color: #c9ff0f;
+            border-color: #c9ff0f;
+        }
+        select,
+        button,
+        a,
+        input,
+        textarea {
+            font: inherit;
+        }
         .nav-scroller {
             display: flex;
             gap: 0.75rem;
@@ -151,6 +208,28 @@
         }
         .nav-active {
             background-color: #c9ff0f;
+            color: #0d0d0d;
+            border-color: #c9ff0f;
+        }
+        .neon-toggle {
+            border: 1px solid rgba(242, 242, 242, 0.8);
+            border-radius: 999px;
+            padding: 0.45rem 1rem;
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: rgba(242, 242, 242, 0.94);
+            background: rgba(13, 13, 13, 0.6);
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+        .neon-toggle:hover,
+        .neon-toggle:focus-visible {
+            border-color: #c9ff0f;
+            color: #c9ff0f;
+            outline: none;
+        }
+        .neon-toggle[aria-pressed="true"] {
+            background: #c9ff0f;
             color: #0d0d0d;
             border-color: #c9ff0f;
         }
@@ -258,6 +337,21 @@
             font-size: 0.8rem;
             color: rgba(242, 242, 242, 0.78);
         }
+        [data-animate] {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.9s ease, transform 0.9s ease;
+        }
+        [data-animate="reveal-right"] {
+            transform: translateX(32px);
+        }
+        [data-animate="reveal-left"] {
+            transform: translateX(-32px);
+        }
+        [data-animate].in-view {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
         .signal-track {
             position: relative;
             padding-left: 2rem;
@@ -318,6 +412,44 @@
         }
         .loop-card:hover::before {
             opacity: 1;
+        }
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.65);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            transition: opacity 0.3s ease;
+            z-index: 50;
+        }
+        .modal-panel {
+            background: rgba(10, 10, 16, 0.95);
+            border: 1px solid rgba(242, 242, 242, 0.3);
+            border-radius: 20px;
+            max-width: 720px;
+            width: 100%;
+            padding: 2rem;
+            color: #f2f2f2;
+            box-shadow: 0 0 45px rgba(0, 237, 255, 0.35);
+            position: relative;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            border: none;
+            background: transparent;
+            color: #f2f2f2;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        .modal-close:focus-visible {
+            outline: 2px solid #c9ff0f;
+            outline-offset: 2px;
         }
         @keyframes grainMove {
             0% { transform: translate(0, 0); }
@@ -456,9 +588,12 @@
     <span class="vibe-orb vibe-orb-right" data-parallax data-speed="-0.15" aria-hidden="true"></span>
 
     <header class="relative z-10 border-b-4 border-ivory/60">
-        <nav class="max-w-6xl mx-auto px-4 sm:px-5 py-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <a href="#top" class="text-2xl font-semibold tracking-wide hover:text-acid transition-colors text-center sm:text-left">PRASHANT//16</a>
-            <div class="nav-scroller">
+        <nav class="max-w-6xl mx-auto px-4 sm:px-5 py-5 flex flex-col gap-4" aria-label="Primary navigation">
+            <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <a href="#top" class="text-2xl font-semibold tracking-wide hover:text-acid transition-colors text-center sm:text-left" aria-label="Navigate to top">PRASHANT//16</a>
+                <button type="button" id="neon-toggle" class="neon-toggle self-start sm:self-auto" aria-pressed="false">Neon OFF</button>
+            </div>
+            <div class="nav-scroller" role="tablist">
                 <a href="#about" data-section="about" class="nav-link">About</a>
                 <a href="#works" data-section="works" class="nav-link">My Works</a>
                 <a href="#skills" data-section="skills" class="nav-link">Skills</a>
@@ -467,19 +602,14 @@
             </div>
         </nav>
         <div class="status-ticker" aria-live="polite">
-            <div class="ticker-track px-4 py-3">
-                <span class="ticker-chip"><span class="pulse-dot" aria-hidden="true"></span>Operational calm online</span>
-                <span class="ticker-chip"><span class="pulse-dot" aria-hidden="true"></span>NeverZero checkpoints synced</span>
-                <span class="ticker-chip"><span class="pulse-dot" aria-hidden="true"></span>Reading stack rotating weekly</span>
-                <span class="ticker-chip"><span class="pulse-dot" aria-hidden="true"></span>Momentum score steady 87%</span>
-            </div>
+            <div class="ticker-track px-4 py-3" data-status-ticker></div>
         </div>
         <div class="absolute inset-x-0 bottom-0 h-2 bg-[repeating-linear-gradient(90deg,#f2f2f2_0_40px,#0d0d0d_40px_80px,#00edff_80px_120px)] animate-pulseDash"></div>
     </header>
 
     <main id="top" class="relative z-10 max-w-6xl mx-auto px-4 sm:px-5 py-10 sm:py-16 space-y-12 sm:space-y-24">
         <section id="about" class="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] items-stretch">
-            <div class="p-6 sm:p-8 bg-ink/80 border-4 border-ivory shadow-brutal relative overflow-hidden transition-transform duration-300 hover:-translate-y-1 card-hover" data-animate>
+            <div class="p-6 sm:p-8 bg-ink/80 border-4 border-ivory shadow-brutal relative overflow-hidden transition-transform duration-300 hover:-translate-y-1 card-hover" data-animate data-delay="0.05s">
                 <div class="absolute -top-16 -right-16 w-48 h-48 bg-acid/40 blur-3xl rounded-full animate-float"></div>
                 <p class="font-mono text-sm uppercase tracking-[0.4em] text-slate">About Me</p>
                 <div class="inline-flex items-center gap-2 px-3 py-1 mt-3 border border-acid/70 text-xs font-mono tracking-[0.4em] text-acid/90 bg-ink/70">VIBE CODING LAB</div>
@@ -537,7 +667,7 @@
             </div>
         </section>
 
-        <section id="works" class="space-y-8 border border-ivory sm:border-4 p-6 sm:p-8 bg-ink/90 shadow-brutal card-hover" data-animate>
+        <section id="works" class="space-y-8 border border-ivory sm:border-4 p-6 sm:p-8 bg-ink/90 shadow-brutal card-hover" data-animate data-delay="0.1s">
             <div class="flex flex-col gap-3">
                 <p class="font-mono text-sm uppercase tracking-[0.4em] text-slate">Build Log</p>
                 <h2 class="text-4xl font-semibold">My Works</h2>
@@ -566,8 +696,9 @@
                         </div>
                     </dl>
                     <div class="flex flex-wrap gap-3">
-                        <a href="https://example.com/neverzero-download" target="_blank" rel="noreferrer" class="px-4 py-3 border-2 border-acid text-acid font-semibold hover:bg-acid hover:text-ink transition">Download build</a>
-                        <a href="https://github.com/prashantchataut/NeverZero" target="_blank" rel="noreferrer" class="px-4 py-3 border-2 border-ivory text-ivory font-semibold hover:bg-ivory hover:text-ink transition">View repo</a>
+                        <a href="https://www.mediafire.com/file/01saykxm1qdqptw/never+0.zip/file" target="_blank" rel="noreferrer" class="px-4 py-3 border-2 border-acid text-acid font-semibold hover:bg-acid hover:text-ink transition" aria-label="Download the latest NeverZero build">Download build</a>
+                        <a href="https://github.com/prashantchataut/NeverZero" target="_blank" rel="noreferrer" class="px-4 py-3 border-2 border-ivory text-ivory font-semibold hover:bg-ivory hover:text-ink transition" aria-label="Open NeverZero GitHub repository">View repo</a>
+                        <button type="button" class="px-4 py-3 border-2 border-cyber text-cyber font-semibold hover:bg-cyber hover:text-ink transition cta-button" data-modal-trigger="neverzero">Case study</button>
                     </div>
                     <div class="flex flex-wrap gap-2 text-xs font-mono uppercase tracking-[0.3em] text-slate">
                         <span class="work-chip border-acid/40 text-acid">Habits</span>
@@ -682,7 +813,7 @@
             </div>
         </section>
 
-        <section id="signal" class="space-y-8 border border-ivory sm:border-4 p-6 sm:p-8 bg-ink/85 shadow-brutal card-hover" data-animate>
+        <section id="signal" class="space-y-8 border border-ivory sm:border-4 p-6 sm:p-8 bg-ink/85 shadow-brutal card-hover" data-animate data-delay="0.15s">
             <div class="flex flex-col gap-3">
                 <p class="font-mono text-sm uppercase tracking-[0.4em] text-slate">Now Signal</p>
                 <h2 class="text-4xl font-semibold">Operating Broadcast</h2>
@@ -707,7 +838,7 @@
             </ol>
         </section>
 
-        <section id="loops" class="space-y-8 border border-ivory sm:border-4 p-6 sm:p-8 bg-ink/85 shadow-brutal card-hover" data-animate>
+        <section id="loops" class="space-y-8 border border-ivory sm:border-4 p-6 sm:p-8 bg-ink/85 shadow-brutal card-hover" data-animate data-delay="0.12s">
             <div class="flex flex-col gap-3">
                 <p class="font-mono text-sm uppercase tracking-[0.4em] text-slate">Live Loops</p>
                 <h2 class="text-4xl font-semibold">Momentum Console</h2>
@@ -716,45 +847,42 @@
             <div class="grid gap-4 md:grid-cols-3">
                 <article class="loop-card p-5">
                     <p class="text-xs font-mono tracking-[0.4em] text-slate">Focus Hours</p>
-                    <h3 class="text-3xl font-semibold mt-3">32 / wk</h3>
-                    <p class="text-slate mt-2">Deep work windows split between Momentum Lab research and writing arcs.</p>
+                    <h3 class="text-3xl font-semibold mt-3" data-metric="focusHours" data-field="value">32 / wk</h3>
+                    <p class="text-slate mt-2" data-metric="focusHours" data-field="description">Deep work windows split between Momentum Lab research and writing arcs.</p>
                     <div class="mt-5">
                         <div class="h-1.5 bg-ivory/10 overflow-hidden">
-                            <span class="block h-full bg-acid" style="width:80%"></span>
+                            <span class="block h-full bg-acid" data-metric-bar="focusHours" style="width:80%"></span>
                         </div>
-                        <p class="text-xs font-mono tracking-[0.35em] text-slate mt-2">+4 hrs vs last loop</p>
+                        <p class="text-xs font-mono tracking-[0.35em] text-slate mt-2" data-metric="focusHours" data-field="delta">+4 hrs vs last loop</p>
                     </div>
                 </article>
                 <article class="loop-card p-5">
                     <p class="text-xs font-mono tracking-[0.4em] text-slate">Research Sprints</p>
-                    <h3 class="text-3xl font-semibold mt-3">3 Active</h3>
-                    <p class="text-slate mt-2">Signal reviews on philosophy, systems thinking, and interface craft.</p>
+                    <h3 class="text-3xl font-semibold mt-3" data-metric="research" data-field="value">3 Active</h3>
+                    <p class="text-slate mt-2" data-metric="research" data-field="description">Signal reviews on philosophy, systems thinking, and interface craft.</p>
                     <div class="mt-5">
                         <div class="h-1.5 bg-ivory/10 overflow-hidden">
-                            <span class="block h-full bg-cyber" style="width:60%"></span>
+                            <span class="block h-full bg-cyber" data-metric-bar="research" style="width:60%"></span>
                         </div>
-                        <p class="text-xs font-mono tracking-[0.35em] text-slate mt-2">2 micro-reports in queue</p>
+                        <p class="text-xs font-mono tracking-[0.35em] text-slate mt-2" data-metric="research" data-field="delta">2 micro-reports in queue</p>
                     </div>
                 </article>
                 <article class="loop-card p-5">
                     <p class="text-xs font-mono tracking-[0.4em] text-slate">Build Streak</p>
-                    <h3 class="text-3xl font-semibold mt-3">27 Days</h3>
-                    <p class="text-slate mt-2">Shipping tiny utilities for NeverZero and refreshing the vibe kit nightly.</p>
+                    <h3 class="text-3xl font-semibold mt-3" data-metric="build" data-field="value">27 Days</h3>
+                    <p class="text-slate mt-2" data-metric="build" data-field="description">Shipping tiny utilities for NeverZero and refreshing the vibe kit nightly.</p>
                     <div class="mt-5">
                         <div class="h-1.5 bg-ivory/10 overflow-hidden">
-                            <span class="block h-full bg-punch" style="width:90%"></span>
+                            <span class="block h-full bg-punch" data-metric-bar="build" style="width:90%"></span>
                         </div>
-                        <p class="text-xs font-mono tracking-[0.35em] text-slate mt-2">Maintaining calm momentum</p>
+                        <p class="text-xs font-mono tracking-[0.35em] text-slate mt-2" data-metric="build" data-field="delta">Maintaining calm momentum</p>
                     </div>
                 </article>
             </div>
-            <div class="flux-ticker rounded-sm">
-                <div class="ticker-track items-center">
+            <div class="flux-ticker rounded-sm" data-animate="reveal-right" data-delay="0.25s">
+                <div class="ticker-track items-center gap-3">
                     <span class="flux-badge">Now tracking</span>
-                    <span class="ticker-chip">NeverZero prompts • 214 data points</span>
-                    <span class="ticker-chip">Study loop latency • 11 mins</span>
-                    <span class="ticker-chip">Reading backlog • 4 essays</span>
-                    <span class="ticker-chip">Feedback queue • 3 peers</span>
+                    <div class="flex gap-3" data-flux-ticker></div>
                 </div>
             </div>
         </section>
@@ -866,7 +994,7 @@
             </div>
         </section>
 
-        <section id="projects" class="space-y-8" data-animate>
+        <section id="projects" class="space-y-8" data-animate data-delay="0.18s">
             <div>
                 <p class="font-mono text-sm uppercase tracking-[0.4em] text-slate">Projects</p>
                 <h2 class="text-4xl font-semibold mt-4">Projects</h2>
@@ -898,14 +1026,14 @@
             </div>
         </section>
 
-        <section id="contact" class="space-y-6 border border-ivory sm:border-4 p-4 sm:p-8 bg-ink shadow-none sm:shadow-brutal w-full overflow-hidden" data-animate>
+        <section id="contact" class="space-y-6 border border-ivory sm:border-4 p-4 sm:p-8 bg-ink shadow-none sm:shadow-brutal w-full overflow-hidden" data-animate data-delay="0.2s">
             <div class="flex flex-col gap-3">
                 <p class="font-mono text-sm uppercase tracking-[0.4em] text-slate">Contact</p>
                 <h2 class="text-4xl font-semibold">Contact</h2>
                 <p class="text-lg text-slate">Reach out for collaborations, thoughtful conversations, or feedback swaps.</p>
             </div>
             <div class="grid gap-4 md:grid-cols-2">
-                <a href="mailto:prashantchataut8@gmail.com" class="group w-full border border-ivory sm:border-2 p-5 flex flex-col sm:flex-row sm:items-center gap-4 hover:bg-acid hover:text-ink transition">
+                <a href="mailto:prashantchataut8@gmail.com" class="group w-full border border-ivory sm:border-2 p-5 flex flex-col sm:flex-row sm:items-center gap-4 hover:bg-acid hover:text-ink transition" aria-label="Email Prashant Chataut">
                     <div class="h-12 w-12 border-2 border-current flex items-center justify-center font-mono">@</div>
                     <div>
                         <p class="text-sm text-slate group-hover:text-ink">Email</p>
@@ -913,7 +1041,7 @@
                         <p class="text-xs text-slate/80 mt-1">Best for thoughtful notes or long-form collabs.</p>
                     </div>
                 </a>
-                <a href="https://instagram.com/prashantchataut_" target="_blank" rel="noreferrer" class="group w-full border border-ivory sm:border-2 p-5 flex flex-col sm:flex-row sm:items-center gap-4 hover:bg-punch hover:text-ink transition">
+                <a href="https://instagram.com/prashantchataut_" target="_blank" rel="noreferrer" class="group w-full border border-ivory sm:border-2 p-5 flex flex-col sm:flex-row sm:items-center gap-4 hover:bg-punch hover:text-ink transition" aria-label="Open Instagram profile">
                     <div class="h-12 w-12 border-2 border-current flex items-center justify-center font-mono">IG</div>
                     <div>
                         <p class="text-sm text-slate group-hover:text-ink">Instagram</p>
@@ -921,7 +1049,7 @@
                         <p class="text-xs text-slate/80 mt-1">Ping me with quick questions or reactions.</p>
                     </div>
                 </a>
-                <a href="https://github.com/prashantchataut" target="_blank" rel="noreferrer" class="group w-full border border-ivory sm:border-2 p-5 flex flex-col sm:flex-row sm:items-center gap-4 hover:bg-cyber hover:text-ink transition">
+                <a href="https://github.com/prashantchataut" target="_blank" rel="noreferrer" class="group w-full border border-ivory sm:border-2 p-5 flex flex-col sm:flex-row sm:items-center gap-4 hover:bg-cyber hover:text-ink transition" aria-label="Open GitHub profile">
                     <div class="h-12 w-12 border-2 border-current flex items-center justify-center font-mono">GH</div>
                     <div>
                         <p class="text-sm text-slate group-hover:text-ink">GitHub</p>
@@ -939,6 +1067,31 @@
         </section>
     </main>
 
+    <div class="modal-backdrop" data-modal="neverzero" hidden>
+        <article class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="neverzero-modal-title">
+            <button class="modal-close" type="button" data-modal-close aria-label="Close case study">&times;</button>
+            <p class="text-xs font-mono uppercase tracking-[0.4em] text-slate">Case Study</p>
+            <h2 id="neverzero-modal-title" class="text-3xl font-semibold mt-2">NeverZero Habit OS</h2>
+            <p class="text-lg text-ivory/80 mt-4">A consistency companion designed to keep teens and builders accountable through respectful nudges, meaningful streak intelligence, and community proof.</p>
+            <ul class="mt-6 space-y-3 text-sm text-ivory/90 list-disc list-inside">
+                <li>Loops Engine maps habit templates to measurable metrics and surfaces drift alerts before streaks fall apart.</li>
+                <li>Insight Layer blends completion trends, leaderboard deltas, and qualitative wins for weekly retros.</li>
+                <li>Community Capsules let peers swap challenges, mini reports, and calm encouragement without noisy feeds.</li>
+            </ul>
+            <div class="grid sm:grid-cols-2 gap-4 mt-6">
+                <div class="device-card">
+                    <p class="text-sm font-semibold">Stack Specs</p>
+                    <p class="text-xs text-ivory/70 mt-1">Expo + Tailwind + Supabase</p>
+                    <p class="text-xs text-ivory/70">Ship cadence: nightly</p>
+                </div>
+                <div class="device-card">
+                    <p class="text-sm font-semibold">Next milestones</p>
+                    <p class="text-xs text-ivory/70 mt-1">Push notifications, social squads, AI vibe coach.</p>
+                </div>
+            </div>
+        </article>
+    </div>
+
     <footer class="relative z-10 border-t-4 border-ivory py-8 px-5 text-center text-sm text-slate">
         <p>© 2025 Prashant Chataut</p>
     </footer>
@@ -948,18 +1101,16 @@
         const animateObserver = new IntersectionObserver(
             entries => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.remove('opacity-0', 'translate-y-8');
-                        animateObserver.unobserve(entry.target);
-                    }
+                    if (!entry.isIntersecting) return;
+                    const delay = entry.target.dataset.delay || '0s';
+                    entry.target.style.transitionDelay = delay;
+                    entry.target.classList.add('in-view');
+                    animateObserver.unobserve(entry.target);
                 });
             },
             { threshold: 0.2 }
         );
-        animateTargets.forEach(el => {
-            el.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-700');
-            animateObserver.observe(el);
-        });
+        animateTargets.forEach(el => animateObserver.observe(el));
 
         const navLinks = document.querySelectorAll('.nav-link');
         const sectionObserver = new IntersectionObserver(
@@ -967,11 +1118,10 @@
                 entries.forEach(entry => {
                     const id = entry.target.getAttribute('id');
                     const link = document.querySelector(`.nav-link[data-section="${id}"]`);
-                    if (link) {
-                        if (entry.isIntersecting) {
-                            navLinks.forEach(l => l.classList.remove('nav-active'));
-                            link.classList.add('nav-active');
-                        }
+                    if (!link) return;
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(l => l.classList.remove('nav-active'));
+                        link.classList.add('nav-active');
                     }
                 });
             },
@@ -980,7 +1130,7 @@
         document.querySelectorAll('section[id]').forEach(section => sectionObserver.observe(section));
 
         const parallaxTargets = document.querySelectorAll('[data-parallax]');
-        let mouse = { x: 0, y: 0 };
+        const mouse = { x: 0, y: 0 };
         document.addEventListener('pointermove', event => {
             mouse.x = event.clientX / window.innerWidth - 0.5;
             mouse.y = event.clientY / window.innerHeight - 0.5;
@@ -994,32 +1144,34 @@
             });
             requestAnimationFrame(renderParallax);
         }
-        if (parallaxTargets.length) {
-            renderParallax();
-        }
+        if (parallaxTargets.length) renderParallax();
 
-        const neonToggle = document.createElement('div');
-        neonToggle.className = 'fixed bottom-5 right-5 px-4 py-2 border-2 border-ivory bg-ink text-ivory font-mono text-xs uppercase tracking-widest shadow-brutal';
-        neonToggle.style.zIndex = '50';
-        neonToggle.textContent = 'Neon mode: OFF';
-        document.body.appendChild(neonToggle);
-
-        let neonActive = false;
+        const neonToggle = document.getElementById('neon-toggle');
         const body = document.body;
+        const NEON_KEY = 'neon-mode';
+        const savedNeon = localStorage.getItem(NEON_KEY) === '1';
+        applyNeon(savedNeon);
+
+        function applyNeon(state) {
+            body.classList.toggle('neon-mode', state);
+            if (neonToggle) {
+                neonToggle.setAttribute('aria-pressed', state);
+                neonToggle.textContent = state ? 'Neon ON' : 'Neon OFF';
+            }
+        }
         function toggleNeon() {
-            neonActive = !neonActive;
-            body.classList.toggle('bg-grain', neonActive);
-            body.classList.toggle('shadow-neon', neonActive);
-            neonToggle.textContent = `Neon mode: ${neonActive ? 'ON' : 'OFF'}`;
-            neonToggle.classList.toggle('bg-acid', neonActive);
-            neonToggle.classList.toggle('text-ink', neonActive);
+            const newState = !body.classList.contains('neon-mode');
+            applyNeon(newState);
+            localStorage.setItem(NEON_KEY, newState ? '1' : '0');
+        }
+        if (neonToggle) {
+            neonToggle.addEventListener('click', toggleNeon);
         }
         document.addEventListener('keydown', event => {
-            if (event.key.toLowerCase() === 'n') {
+            if (event.key.toLowerCase() === 'n' && !event.metaKey && !event.ctrlKey) {
                 toggleNeon();
             }
         });
-        neonToggle.addEventListener('click', toggleNeon);
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', e => {
@@ -1051,7 +1203,6 @@
                 indicator.classList.toggle('bg-ivory/20', idx !== index % quotes.length);
             });
         }
-
         if (quoteText && quoteSource) {
             renderQuote(quoteIndex);
             setInterval(() => {
@@ -1059,6 +1210,110 @@
                 renderQuote(quoteIndex);
             }, 5000);
         }
+
+        const statusData = [
+            'Operational calm online',
+            'NeverZero checkpoints synced',
+            'Reading stack rotating weekly',
+            'Momentum score steady 87%'
+        ];
+        const fluxData = [
+            'NeverZero prompts • 214 data points',
+            'Study loop latency • 11 mins',
+            'Reading backlog • 4 essays',
+            'Feedback queue • 3 peers'
+        ];
+        const statusTicker = document.querySelector('[data-status-ticker]');
+        const fluxTicker = document.querySelector('[data-flux-ticker]');
+
+        function renderTicker(container, data) {
+            if (!container) return;
+            container.innerHTML = '';
+            const looped = [...data, ...data];
+            looped.forEach(item => {
+                const span = document.createElement('span');
+                span.className = 'ticker-chip';
+                span.innerHTML = `<span class="pulse-dot" aria-hidden="true"></span>${item}`;
+                container.appendChild(span);
+            });
+        }
+        function renderFlux(container, data) {
+            if (!container) return;
+            container.innerHTML = '';
+            data.forEach(item => {
+                const chip = document.createElement('span');
+                chip.className = 'ticker-chip';
+                chip.textContent = item;
+                container.appendChild(chip);
+            });
+        }
+        renderTicker(statusTicker, statusData);
+        renderFlux(fluxTicker, fluxData);
+
+        const momentumData = {
+            focusHours: {
+                value: '34 / wk',
+                description: 'Deep work windows across Momentum Lab research and writing arcs.',
+                delta: '+5 hrs vs last loop',
+                progress: 0.85
+            },
+            research: {
+                value: '4 Active',
+                description: 'Signal reviews on philosophy, systems thinking, and interface craft.',
+                delta: '3 micro-reports in queue',
+                progress: 0.7
+            },
+            build: {
+                value: '32 Days',
+                description: 'Nightly utilities for NeverZero and vibe kit refreshes.',
+                delta: 'No misses in last 4 weeks',
+                progress: 0.95
+            }
+        };
+        Object.entries(momentumData).forEach(([key, config]) => {
+            document.querySelectorAll(`[data-metric="${key}"][data-field]`).forEach(el => {
+                const field = el.dataset.field;
+                if (config[field]) {
+                    el.textContent = config[field];
+                }
+            });
+            document.querySelectorAll(`[data-metric-bar="${key}"]`).forEach(bar => {
+                bar.style.width = `${Math.min(config.progress, 1) * 100}%`;
+            });
+        });
+
+        const modalTriggers = document.querySelectorAll('[data-modal-trigger]');
+        const modals = document.querySelectorAll('[data-modal]');
+
+        function openModal(id) {
+            const modal = document.querySelector(`[data-modal="${id}"]`);
+            if (!modal) return;
+            modal.hidden = false;
+            document.body.style.overflow = 'hidden';
+            modal.focus?.();
+        }
+        function closeModal(modal) {
+            if (!modal) return;
+            modal.hidden = true;
+            document.body.style.overflow = '';
+        }
+        modalTriggers.forEach(trigger => {
+            trigger.addEventListener('click', () => openModal(trigger.dataset.modalTrigger));
+        });
+        modals.forEach(modal => {
+            modal.addEventListener('click', event => {
+                if (event.target === modal || event.target.hasAttribute('data-modal-close')) {
+                    closeModal(modal);
+                }
+            });
+        });
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') {
+                modals.forEach(modal => {
+                    if (!modal.hidden) closeModal(modal);
+                });
+            }
+        });
     </script>
 </body>
 </html>
