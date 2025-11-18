@@ -919,6 +919,50 @@
                     </figure>
                 </div>
             </div>
+            <div class="border border-ivory sm:border-4 p-5 sm:p-7 bg-ink/85 shadow-brutal rounded-sm space-y-5" data-animate data-delay="0.15s">
+                <div class="flex flex-col gap-2">
+                    <p class="font-mono text-xs uppercase tracking-[0.4em] text-slate">Case Study Stories</p>
+                    <h3 class="text-3xl font-semibold">NeverZero build sprints</h3>
+                    <p class="text-ivory/80 text-base">Tap a sprint to read what happened, what was shipped, and which signals proved it worked.</p>
+                </div>
+                <div class="flex flex-wrap gap-3" role="tablist" aria-label="NeverZero case study stories">
+                    <button class="px-4 py-2 border-2 border-acid text-acid font-semibold hover:bg-acid hover:text-ink transition" data-case-trigger="loops" aria-pressed="false">Loops Engine</button>
+                    <button class="px-4 py-2 border-2 border-cyber text-cyber font-semibold hover:bg-cyber hover:text-ink transition" data-case-trigger="insight" aria-pressed="false">Insight Layer</button>
+                    <button class="px-4 py-2 border-2 border-punch text-punch font-semibold hover:bg-punch hover:text-ink transition" data-case-trigger="community" aria-pressed="false">Community Capsules</button>
+                </div>
+                <div class="space-y-4">
+                    <article class="border border-ivory/60 p-5 bg-ink" data-case-panel="loops">
+                        <p class="font-mono text-xs uppercase tracking-[0.35em] text-slate">Sprint 12 · Rhythm tuning</p>
+                        <h4 class="text-2xl font-semibold mt-2">Loop health telemetry</h4>
+                        <p class="text-slate mt-3">Mapped every habit template to a measurable loop, added drift alerts, and piped the data to the status ticker. Result: streak drops fell 34% across the beta group.</p>
+                        <ul class="mt-4 text-sm font-mono uppercase tracking-[0.25em] text-slate/80 grid gap-2 sm:grid-cols-3">
+                            <li><span class="block text-ivory text-lg tracking-normal">12</span>Templates hardened</li>
+                            <li><span class="block text-ivory text-lg tracking-normal">-34%</span>Drift incidents</li>
+                            <li><span class="block text-ivory text-lg tracking-normal">4</span>Review loops</li>
+                        </ul>
+                    </article>
+                    <article class="border border-cyber/60 p-5 bg-ink" data-case-panel="insight" hidden>
+                        <p class="font-mono text-xs uppercase tracking-[0.35em] text-slate">Sprint 15 · Intelligence pass</p>
+                        <h4 class="text-2xl font-semibold mt-2">Insight layer roll-out</h4>
+                        <p class="text-slate mt-3">Shipped velocity graphs, leaderboard deltas, and reminder heuristics. Peers used the dashboard to plan weekly retros without pinging me for exports.</p>
+                        <ul class="mt-4 text-sm font-mono uppercase tracking-[0.25em] text-slate/80 grid gap-2 sm:grid-cols-3">
+                            <li><span class="block text-ivory text-lg tracking-normal">3</span>Dash modules</li>
+                            <li><span class="block text-ivory text-lg tracking-normal">92%</span>Completion rate</li>
+                            <li><span class="block text-ivory text-lg tracking-normal">6</span>Peers onboarded</li>
+                        </ul>
+                    </article>
+                    <article class="border border-punch/60 p-5 bg-ink" data-case-panel="community" hidden>
+                        <p class="font-mono text-xs uppercase tracking-[0.35em] text-slate">Sprint 18 · Social sync</p>
+                        <h4 class="text-2xl font-semibold mt-2">Community capsules</h4>
+                        <p class="text-slate mt-3">Built light-weight challenge capsules where builders posted mini reports, screenshots, and calm encouragement. Engagement time doubled without adding noisy feeds.</p>
+                        <ul class="mt-4 text-sm font-mono uppercase tracking-[0.25em] text-slate/80 grid gap-2 sm:grid-cols-3">
+                            <li><span class="block text-ivory text-lg tracking-normal">2x</span>Time in app</li>
+                            <li><span class="block text-ivory text-lg tracking-normal">18</span>Captains recruited</li>
+                            <li><span class="block text-ivory text-lg tracking-normal">0</span>Push notifications needed</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
             <div class="border border-dashed border-ivory/40 p-4 sm:p-6 flex flex-col gap-3 bg-ink/70 max-w-4xl mx-auto">
                 <p class="font-mono text-xs uppercase tracking-[0.4em] text-slate">Future Slot</p>
                 <p class="text-lg text-ivory/80">Drop the next tool, plugin, or kit here—add screenshots, platform badges, and a download link when it’s live.</p>
@@ -948,6 +992,31 @@
                     <h3 class="text-2xl font-semibold mt-2">Interface experiments shipped</h3>
                 </li>
             </ol>
+        </section>
+
+        <section id="proof" class="space-y-8 border border-ivory sm:border-4 p-6 sm:p-8 bg-ink/85 shadow-brutal card-hover" data-animate data-delay="0.16s" role="region" aria-labelledby="proof-heading">
+            <div class="flex flex-col gap-3">
+                <p class="font-mono text-sm uppercase tracking-[0.4em] text-slate">Signal Boost</p>
+                <h2 id="proof-heading" class="text-4xl font-semibold">What collaborators say</h2>
+                <p class="text-lg text-ivory/80">Social proof from peers and early users keeps the vibe grounded in real outcomes.</p>
+            </div>
+            <div class="grid gap-4 md:grid-cols-3">
+                <article class="border-2 border-acid p-5 bg-ink flex flex-col gap-3">
+                    <p class="text-sm font-mono uppercase tracking-[0.3em] text-acid">Accountability</p>
+                    <p class="text-lg text-ivory">“He instrumented my study plan in three days and the telemetry caught my drift before I lost the streak.”</p>
+                    <p class="text-xs text-slate/80">— Tapesh Khadka · Beta captain</p>
+                </article>
+                <article class="border-2 border-cyber p-5 bg-ink flex flex-col gap-3">
+                    <p class="text-sm font-mono uppercase tracking-[0.3em] text-cyber">Product QA</p>
+                    <p class="text-lg text-ivory">“Prashant runs critique loops like a senior PM—he writes briefs, prototypes, and ships fixes the same night.”</p>
+                    <p class="text-xs text-slate/80">— Esha Rai · Learning designer</p>
+                </article>
+                <article class="border-2 border-punch p-5 bg-ink flex flex-col gap-3">
+                    <p class="text-sm font-mono uppercase tracking-[0.3em] text-punch">Calm leadership</p>
+                    <p class="text-lg text-ivory">“Even when the squad is tired, he keeps the ops calm and documents every call so we never repeat mistakes.”</p>
+                    <p class="text-xs text-slate/80">— David Smith · Systems mentor</p>
+                </article>
+            </div>
         </section>
 
         <section id="level-up" class="space-y-8 border border-ivory sm:border-4 p-6 sm:p-8 bg-ink/85 shadow-brutal card-hover" data-animate data-delay="0.18s" role="region" aria-labelledby="level-heading">
@@ -1286,6 +1355,29 @@
         }
 
         document.addEventListener('pointermove', handlePointerMove);
+
+        const caseTriggers = document.querySelectorAll('[data-case-trigger]');
+        const casePanels = document.querySelectorAll('[data-case-panel]');
+
+        function showCasePanel(id) {
+            caseTriggers.forEach(trigger => {
+                const isActive = trigger.dataset.caseTrigger === id;
+                trigger.setAttribute('aria-pressed', String(isActive));
+                trigger.classList.toggle('bg-ink text-ink', false);
+                trigger.classList.toggle('shadow-brutal', isActive);
+            });
+            casePanels.forEach(panel => {
+                panel.hidden = panel.dataset.casePanel !== id;
+            });
+        }
+
+        if (caseTriggers.length && casePanels.length) {
+            const initial = caseTriggers[0].dataset.caseTrigger;
+            showCasePanel(initial);
+            caseTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => showCasePanel(trigger.dataset.caseTrigger));
+            });
+        }
 
         const handleMotionPreference = event => {
             if (event.matches) {
