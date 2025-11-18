@@ -685,13 +685,6 @@
             }
         }
     </style>
-            entry.textContent = `${timestamp} — ${message}`;
-            quizLogEl.prepend(entry);
-            while (quizLogEl.children.length > 6) {
-                quizLogEl.removeChild(quizLogEl.lastElementChild);
-            }
-        }
-    </script>
 </head>
 <body class="bg-ink text-ivory relative overflow-x-hidden">
     <a class="skip-link" href="#about">Skip to main content</a>
@@ -1497,7 +1490,8 @@
                 answer: 0,
                 hint: 'Recovery > thrash.',
                 success: 'Calm reset suggestion landed.'
-        }
+            }
+        ];
 
         function applyMicrofeed(index = 0) {
             const statusSet = Array.isArray(feedState.status) && feedState.status.length
