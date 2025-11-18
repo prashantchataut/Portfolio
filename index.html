@@ -3,14 +3,19 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index,follow" />
+    <meta name="author" content="Prashant Chataut" />
     <title>Prashant Chataut — Neobrutalist Portfolio</title>
     <meta name="description" content="Neobrutalist portfolio for Prashant Chataut, a 16-year-old thinker who blends philosophy, study systems, and writing." />
+    <meta name="keywords" content="Prashant Chataut, NeverZero, systems builder, habit apps, vibe coding" />
+    <link rel="canonical" href="https://prashantchataut.vercel.app" />
     <meta name="theme-color" content="#0d0d0d" />
     <meta property="og:title" content="Prashant Chataut — Portfolio" />
     <meta property="og:description" content="Philosophy, writing, and deliberate learning powering the NeverZero mindset." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://github.com/prashantchataut" />
     <meta property="og:image" content="https://github.com/prashantchataut.png" />
+    <meta property="og:site_name" content="Prashant Chataut Portfolio" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Prashant Chataut — Portfolio" />
     <meta name="twitter:description" content="Philosophy, writing, and deliberate learning powering the NeverZero mindset." />
@@ -82,19 +87,33 @@
         };
     </script>
     <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Prashant Chataut",
-            "description": "16-year-old systems builder crafting code-led study systems and interfaces.",
-            "url": "https://prashantchataut.vercel.app",
-            "image": "https://github.com/prashantchataut.png",
-            "jobTitle": "Systems Builder",
-            "sameAs": [
-                "https://github.com/prashantchataut",
-                "https://instagram.com/prashantchataut_"
-            ]
-        }
+        [
+            {
+                "@context": "https://schema.org",
+                "@type": "Person",
+                "name": "Prashant Chataut",
+                "description": "16-year-old systems builder crafting code-led study systems and interfaces.",
+                "url": "https://prashantchataut.vercel.app",
+                "image": "https://github.com/prashantchataut.png",
+                "jobTitle": "Systems Builder",
+                "sameAs": [
+                    "https://github.com/prashantchataut",
+                    "https://instagram.com/prashantchataut_"
+                ]
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": "Prashant Chataut — Neobrutalist Portfolio",
+                "url": "https://prashantchataut.vercel.app",
+                "description": "Portfolio showcasing systems thinking, NeverZero, and vibe coding experiments by Prashant Chataut.",
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": "https://www.google.com/search?q=Prashant+Chataut+{search_term_string}",
+                    "query-input": "required name=search_term_string"
+                }
+            }
+        ]
     </script>
     <style>
         body {
@@ -102,6 +121,21 @@
             background-image: radial-gradient(circle at 20% 20%, rgba(201, 255, 15, 0.08), transparent 40%),
                 radial-gradient(circle at 80% 0%, rgba(0, 237, 255, 0.08), transparent 35%),
                 linear-gradient(120deg, rgba(13, 13, 13, 0.95), rgba(20, 20, 20, 0.9));
+        }
+        .skip-link {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translateY(-150%);
+            background: #c9ff0f;
+            color: #0d0d0d;
+            padding: 0.5rem 1rem;
+            font-weight: 600;
+            z-index: 60;
+            transition: transform 0.2s ease;
+        }
+        .skip-link:focus {
+            transform: translateY(0);
         }
         .noise-overlay {
             pointer-events: none;
@@ -599,7 +633,31 @@
                 font-size: 0.8rem;
             }
         }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .noise-overlay,
+            .ambient-grid,
+            .scanlines,
+            .vibe-ribbon,
+            .vibe-orb,
+            .status-ticker .ticker-track,
+            .flux-ticker .ticker-track {
+                animation: none !important;
+            }
+        }
     </style>
+            entry.textContent = `${timestamp} — ${message}`;
+            quizLogEl.prepend(entry);
+            while (quizLogEl.children.length > 6) {
+                quizLogEl.removeChild(quizLogEl.lastElementChild);
+            }
+        }
+    </script>
 </head>
 <body class="bg-ink text-ivory relative overflow-x-hidden">
     <div class="noise-overlay"></div>
@@ -610,7 +668,7 @@
     <span class="vibe-orb vibe-orb-left" data-parallax data-speed="0.2" aria-hidden="true"></span>
     <span class="vibe-orb vibe-orb-right" data-parallax data-speed="-0.15" aria-hidden="true"></span>
 
-    <header class="relative z-10 border-b-4 border-ivory/60">
+    <header class="relative z-10 border-b-4 border-ivory/60" role="banner">
         <nav class="max-w-6xl mx-auto px-4 sm:px-5 py-5 flex flex-col gap-4" aria-label="Primary navigation">
             <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <a href="#top" class="text-2xl font-semibold tracking-wide hover:text-acid transition-colors text-center sm:text-left" aria-label="Navigate to top">PRASHANT//16</a>
@@ -630,13 +688,13 @@
         <div class="absolute inset-x-0 bottom-0 h-2 bg-[repeating-linear-gradient(90deg,#f2f2f2_0_40px,#0d0d0d_40px_80px,#00edff_80px_120px)] animate-pulseDash"></div>
     </header>
 
-    <main id="top" class="relative z-10 max-w-6xl mx-auto px-4 sm:px-5 py-10 sm:py-16 space-y-12 sm:space-y-24">
-        <section id="about" class="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] items-stretch">
+    <main id="top" class="relative z-10 max-w-6xl mx-auto px-4 sm:px-5 py-10 sm:py-16 space-y-12 sm:space-y-24" aria-describedby="about-heading">
+        <section id="about" class="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] items-stretch" role="region" aria-labelledby="about-heading">
             <div class="p-6 sm:p-8 bg-ink/80 border-4 border-ivory shadow-brutal relative overflow-hidden transition-transform duration-300 hover:-translate-y-1 card-hover" data-animate data-delay="0.05s">
                 <div class="absolute -top-16 -right-16 w-48 h-48 bg-acid/40 blur-3xl rounded-full animate-float"></div>
                 <p class="font-mono text-sm uppercase tracking-[0.4em] text-slate">About Me</p>
                 <div class="inline-flex items-center gap-2 px-3 py-1 mt-3 border border-acid/70 text-xs font-mono tracking-[0.4em] text-acid/90 bg-ink/70">VIBE CODING LAB</div>
-                <h1 class="text-4xl sm:text-5xl font-bold mt-4 leading-tight">Prashant Chataut<br /><span class="text-acid">16 • Systems, code & design loops</span></h1>
+                <h1 id="about-heading" class="text-4xl sm:text-5xl font-bold mt-4 leading-tight">Prashant Chataut<br /><span class="text-acid">16 • Systems, code & design loops</span></h1>
                 <p class="mt-6 text-lg text-ivory/90">I translate large goals into operating systems that can survive daily use. Every initiative gets decomposed into measurable loops, audited for weak signals, and iterated until it holds. NeverZero is the current focus—a disciplined routine that keeps my peers and me aligned without noise, and vibe coding is the craft that keeps the interfaces intuitive.</p>
                 <div class="mt-8 grid gap-4 sm:gap-6 md:grid-cols-2">
                     <div class="border-2 border-ivory p-4 bg-ink/90">
@@ -649,10 +707,6 @@
                         <p class="text-2xl font-semibold mt-2">Momentum Systems Lab</p>
                         <p class="text-slate mt-4">I design study loops, wire metrics, and iterate until the routine scales.</p>
                     </div>
-                </div>
-                <div class="mt-8 flex flex-wrap gap-4 text-sm font-mono">
-                    <span class="px-4 py-2 border-2 border-acid text-acid">Press N for neon mode ⚡</span>
-                    <span class="px-4 py-2 border-2 border-cyber text-cyber">Scroll for more ↓</span>
                 </div>
             </div>
             <div class="border-4 border-ivory grid gap-4 p-6 bg-ink shadow-brutal card-hover" data-animate>
@@ -690,10 +744,10 @@
             </div>
         </section>
 
-        <section id="works" class="space-y-8 border border-ivory sm:border-4 p-6 sm:p-8 bg-ink/90 shadow-brutal card-hover" data-animate data-delay="0.1s">
+        <section id="works" class="space-y-8 border border-ivory sm:border-4 p-6 sm:p-8 bg-ink/90 shadow-brutal card-hover" data-animate data-delay="0.1s" role="region" aria-labelledby="works-heading">
             <div class="flex flex-col gap-3">
                 <p class="font-mono text-sm uppercase tracking-[0.4em] text-slate">Build Log</p>
-                <h2 class="text-4xl font-semibold">My Works</h2>
+                <h2 id="works-heading" class="text-4xl font-semibold">My Works</h2>
                 <p class="text-lg text-ivory/80">Drop-ready space for apps, products, and experiments—each card can carry screenshots plus download or case-study links the moment they ship.</p>
             </div>
             <div class="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
@@ -719,8 +773,8 @@
                         </div>
                     </dl>
                     <div class="flex flex-wrap gap-3">
-                        <a href="https://www.mediafire.com/file/01saykxm1qdqptw/never+0.zip/file" target="_blank" rel="noreferrer" class="px-4 py-3 border-2 border-acid text-acid font-semibold hover:bg-acid hover:text-ink transition" aria-label="Download the latest NeverZero build">Download build</a>
-                        <a href="https://github.com/prashantchataut/NeverZero" target="_blank" rel="noreferrer" class="px-4 py-3 border-2 border-ivory text-ivory font-semibold hover:bg-ivory hover:text-ink transition" aria-label="Open NeverZero GitHub repository">View repo</a>
+                        <a href="https://www.mediafire.com/file/01saykxm1qdqptw/never+0.zip/file" target="_blank" rel="noopener noreferrer" class="px-4 py-3 border-2 border-acid text-acid font-semibold hover:bg-acid hover:text-ink transition" aria-label="Download the latest NeverZero build">Download build</a>
+                        <a href="https://github.com/prashantchataut/NeverZero" target="_blank" rel="noopener noreferrer" class="px-4 py-3 border-2 border-ivory text-ivory font-semibold hover:bg-ivory hover:text-ink transition" aria-label="Open NeverZero GitHub repository">View repo</a>
                         <button type="button" class="px-4 py-3 border-2 border-cyber text-cyber font-semibold hover:bg-cyber hover:text-ink transition cta-button" data-modal-trigger="neverzero">Case study</button>
                     </div>
                     <div class="flex flex-wrap gap-2 text-xs font-mono uppercase tracking-[0.3em] text-slate">
@@ -836,10 +890,10 @@
             </div>
         </section>
 
-        <section id="signal" class="space-y-8 border border-ivory sm:border-4 p-6 sm:p-8 bg-ink/85 shadow-brutal card-hover" data-animate data-delay="0.15s">
+        <section id="signal" class="space-y-8 border border-ivory sm:border-4 p-6 sm:p-8 bg-ink/85 shadow-brutal card-hover" data-animate data-delay="0.15s" role="region" aria-labelledby="signal-heading">
             <div class="flex flex-col gap-3">
                 <p class="font-mono text-sm uppercase tracking-[0.4em] text-slate">Now Signal</p>
-                <h2 class="text-4xl font-semibold">Operating Broadcast</h2>
+                <h2 id="signal-heading" class="text-4xl font-semibold">Operating Broadcast</h2>
                 <p class="text-lg text-ivory/80">Tiny transmissions logged as the systems evolve in real time.</p>
             </div>
             <ol class="signal-track">
@@ -856,64 +910,44 @@
                 <li class="signal-node">
                     <p class="signal-meta">Nov 16 · 05:50</p>
                     <h3 class="text-2xl font-semibold mt-2">Interface experiments shipped</h3>
-                    <p class="text-slate mt-2">Tested hover kinetics for NeverZero’s dashboard tiles and logged delta notes.</p>
                 </li>
             </ol>
         </section>
 
-        <section id="loops" class="space-y-8 border border-ivory sm:border-4 p-6 sm:p-8 bg-ink/85 shadow-brutal card-hover" data-animate data-delay="0.12s">
-            <div class="flex flex-col gap-3">
-                <p class="font-mono text-sm uppercase tracking-[0.4em] text-slate">Live Loops</p>
-                <h2 class="text-4xl font-semibold">Momentum Console</h2>
-                <p class="text-lg text-ivory/80">Snapshots from the operating cadence that keeps the room energized.</p>
+        <section id="level-up" class="space-y-8 border border-ivory sm:border-4 p-6 sm:p-8 bg-ink/85 shadow-brutal card-hover" data-animate data-delay="0.18s" role="region" aria-labelledby="level-heading">
+            <div class="flex flex-col gap-2">
+                <p class="font-mono text-sm uppercase tracking-[0.4em] text-slate">Prashant, Level Up!</p>
+                <h2 id="level-heading" class="text-4xl font-semibold">Answer pulse-check questions to level Prashant</h2>
+                <p class="text-lg text-ivory/80">Each correct answer adds a signal point. Unlock streak bonuses when the bar fills.</p>
             </div>
-            <div class="grid gap-4 md:grid-cols-3">
-                <article class="loop-card p-5">
-                    <p class="text-xs font-mono tracking-[0.4em] text-slate">Focus Hours</p>
-                    <h3 class="text-3xl font-semibold mt-3" data-metric="focusHours" data-field="value">32 / wk</h3>
-                    <p class="text-slate mt-2" data-metric="focusHours" data-field="description">Deep work windows split between Momentum Lab research and writing arcs.</p>
-                    <div class="mt-5">
-                        <div class="h-1.5 bg-ivory/10 overflow-hidden">
-                            <span class="block h-full bg-acid" data-metric-bar="focusHours" style="width:80%"></span>
-                        </div>
-                        <p class="text-xs font-mono tracking-[0.35em] text-slate mt-2" data-metric="focusHours" data-field="delta">+4 hrs vs last loop</p>
+            <div class="level-grid">
+                <article class="quiz-card" aria-live="polite">
+                    <p class="text-sm font-mono uppercase tracking-[0.35em] text-slate">Level meter</p>
+                    <h3 class="text-3xl font-semibold" data-level-display>Level 07</h3>
+                    <p class="text-slate" data-level-subcopy>Answer 3 correct pulses to level up.</p>
+                    <div class="level-progress"><span data-level-progress style="width:0%"></span></div>
+                    <p class="text-xs font-mono uppercase tracking-[0.3em] text-ivory/70">Pulse log</p>
+                    <div class="quiz-log" data-quiz-log data-empty="true">
+                        <p>No answers logged yet.</p>
                     </div>
                 </article>
-                <article class="loop-card p-5">
-                    <p class="text-xs font-mono tracking-[0.4em] text-slate">Research Sprints</p>
-                    <h3 class="text-3xl font-semibold mt-3" data-metric="research" data-field="value">3 Active</h3>
-                    <p class="text-slate mt-2" data-metric="research" data-field="description">Signal reviews on philosophy, systems thinking, and interface craft.</p>
-                    <div class="mt-5">
-                        <div class="h-1.5 bg-ivory/10 overflow-hidden">
-                            <span class="block h-full bg-cyber" data-metric-bar="research" style="width:60%"></span>
-                        </div>
-                        <p class="text-xs font-mono tracking-[0.35em] text-slate mt-2" data-metric="research" data-field="delta">2 micro-reports in queue</p>
+                <article class="quiz-card" data-quiz>
+                    <p class="text-sm font-mono uppercase tracking-[0.35em] text-slate">Pulse question</p>
+                    <h3 class="text-2xl font-semibold" data-quiz-question>Loading question...</h3>
+                    <div class="quiz-options" data-quiz-options>
+                        <button class="quiz-option">Option A</button>
+                        <button class="quiz-option">Option B</button>
+                        <button class="quiz-option">Option C</button>
                     </div>
+                    <p class="text-xs text-slate" data-quiz-hint>Pick an option to help Prashant focus.</p>
                 </article>
-                <article class="loop-card p-5">
-                    <p class="text-xs font-mono tracking-[0.4em] text-slate">Build Streak</p>
-                    <h3 class="text-3xl font-semibold mt-3" data-metric="build" data-field="value">27 Days</h3>
-                    <p class="text-slate mt-2" data-metric="build" data-field="description">Shipping tiny utilities for NeverZero and refreshing the vibe kit nightly.</p>
-                    <div class="mt-5">
-                        <div class="h-1.5 bg-ivory/10 overflow-hidden">
-                            <span class="block h-full bg-punch" data-metric-bar="build" style="width:90%"></span>
-                        </div>
-                        <p class="text-xs font-mono tracking-[0.35em] text-slate mt-2" data-metric="build" data-field="delta">Maintaining calm momentum</p>
-                    </div>
-                </article>
-            </div>
-            <div class="flux-ticker rounded-sm" data-animate="reveal-right" data-delay="0.25s">
-                <div class="ticker-track items-center gap-3">
-                    <span class="flux-badge">Now tracking</span>
-                    <div class="flex gap-3" data-flux-ticker></div>
-                </div>
             </div>
         </section>
 
-        <section id="skills" class="space-y-10" data-animate>
+        <section id="skills" class="space-y-10" data-animate role="region" aria-labelledby="skills-heading">
             <div class="flex flex-col gap-4">
                 <p class="font-mono text-sm uppercase tracking-[0.4em] text-slate">Skill Radar</p>
-                <h2 class="text-4xl font-semibold">Skills</h2>
+                <h2 id="skills-heading" class="text-4xl font-semibold">Skills</h2>
                 <p class="text-lg text-ivory/80">Grounded strengths shaped by reading, research, and building.</p>
             </div>
             <div class="grid gap-6 md:grid-cols-2">
@@ -992,10 +1026,10 @@
             </div>
         </section>
 
-        <section id="digs" class="space-y-6 border border-ivory sm:border-4 p-6 sm:p-8 bg-ink/90 shadow-brutal card-hover" data-animate>
+        <section id="digs" class="space-y-6 border border-ivory sm:border-4 p-6 sm:p-8 bg-ink/90 shadow-brutal card-hover" data-animate role="region" aria-labelledby="digs-heading">
             <div class="flex flex-col gap-3">
                 <p class="font-mono text-sm uppercase tracking-[0.4em] text-slate">My Digs</p>
-                <h2 class="text-4xl font-semibold">Core Beliefs</h2>
+                <h2 id="digs-heading" class="text-4xl font-semibold">Core Beliefs</h2>
                 <p class="text-lg text-slate">Little rules I use to keep energy high and momentum fun.</p>
             </div>
             <div class="grid gap-4 sm:grid-cols-3">
@@ -1017,10 +1051,10 @@
             </div>
         </section>
 
-        <section id="projects" class="space-y-8" data-animate data-delay="0.18s">
+        <section id="projects" class="space-y-8" data-animate data-delay="0.18s" role="region" aria-labelledby="projects-heading">
             <div>
                 <p class="font-mono text-sm uppercase tracking-[0.4em] text-slate">Projects</p>
-                <h2 class="text-4xl font-semibold mt-4">Projects</h2>
+                <h2 id="projects-heading" class="text-4xl font-semibold mt-4">Projects</h2>
             </div>
             <div class="grid gap-8 lg:grid-cols-2">
                 <article class="border-4 border-ivory p-6 bg-ink shadow-brutal perspective">
@@ -1039,7 +1073,7 @@
                         </div>
                         <div class="card-face rotate-y-180 absolute inset-0 p-6 bg-ink border-2 border-ivory flex flex-col justify-between">
                             <p class="text-lg">Dashboard logs habits, visualizes velocity, and nudges the next action when momentum dips.</p>
-                            <a href="https://github.com/prashantchataut/NeverZero" target="_blank" rel="noreferrer" class="inline-flex items-center gap-3 px-4 py-3 border-2 border-ivory text-ivory hover:bg-acid hover:text-ink transition">
+                            <a href="https://github.com/prashantchataut/NeverZero" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-4 py-3 border-2 border-ivory text-ivory hover:bg-acid hover:text-ink transition">
                                 <span class="font-semibold">View on GitHub</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.25 6.75L6.75 17.25m0-10.5h10.5v10.5" /></svg>
                             </a>
@@ -1049,10 +1083,10 @@
             </div>
         </section>
 
-        <section id="contact" class="space-y-6 border border-ivory sm:border-4 p-4 sm:p-8 bg-ink shadow-none sm:shadow-brutal w-full overflow-hidden" data-animate data-delay="0.2s">
+        <section id="contact" class="space-y-6 border border-ivory sm:border-4 p-4 sm:p-8 bg-ink shadow-none sm:shadow-brutal w-full overflow-hidden" data-animate data-delay="0.2s" role="region" aria-labelledby="contact-heading">
             <div class="flex flex-col gap-3">
                 <p class="font-mono text-sm uppercase tracking-[0.4em] text-slate">Contact</p>
-                <h2 class="text-4xl font-semibold">Contact</h2>
+                <h2 id="contact-heading" class="text-4xl font-semibold">Contact</h2>
                 <p class="text-lg text-slate">Reach out for collaborations, thoughtful conversations, or feedback swaps.</p>
             </div>
             <div class="grid gap-4 md:grid-cols-2">
@@ -1064,7 +1098,7 @@
                         <p class="text-xs text-slate/80 mt-1">Best for thoughtful notes or long-form collabs.</p>
                     </div>
                 </a>
-                <a href="https://instagram.com/prashantchataut_" target="_blank" rel="noreferrer" class="group w-full border border-ivory sm:border-2 p-5 flex flex-col sm:flex-row sm:items-center gap-4 hover:bg-punch hover:text-ink transition" aria-label="Open Instagram profile">
+                <a href="https://instagram.com/prashantchataut_" target="_blank" rel="noopener noreferrer" class="group w-full border border-ivory sm:border-2 p-5 flex flex-col sm:flex-row sm:items-center gap-4 hover:bg-punch hover:text-ink transition" aria-label="Open Instagram profile">
                     <div class="h-12 w-12 border-2 border-current flex items-center justify-center font-mono">IG</div>
                     <div>
                         <p class="text-sm text-slate group-hover:text-ink">Instagram</p>
@@ -1072,7 +1106,7 @@
                         <p class="text-xs text-slate/80 mt-1">Ping me with quick questions or reactions.</p>
                     </div>
                 </a>
-                <a href="https://github.com/prashantchataut" target="_blank" rel="noreferrer" class="group w-full border border-ivory sm:border-2 p-5 flex flex-col sm:flex-row sm:items-center gap-4 hover:bg-cyber hover:text-ink transition" aria-label="Open GitHub profile">
+                <a href="https://github.com/prashantchataut" target="_blank" rel="noopener noreferrer" class="group w-full border border-ivory sm:border-2 p-5 flex flex-col sm:flex-row sm:items-center gap-4 hover:bg-cyber hover:text-ink transition" aria-label="Open GitHub profile">
                     <div class="h-12 w-12 border-2 border-current flex items-center justify-center font-mono">GH</div>
                     <div>
                         <p class="text-sm text-slate group-hover:text-ink">GitHub</p>
@@ -1115,16 +1149,23 @@
         </article>
     </div>
 
-    <footer class="relative z-10 border-t-4 border-ivory py-8 px-5 text-center text-sm text-slate">
+    <footer class="relative z-10 border-t-4 border-ivory py-8 px-5 text-center text-sm text-slate" role="contentinfo">
         <p>© 2025 Prashant Chataut</p>
     </footer>
 
     <script>
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
         const animateTargets = document.querySelectorAll('[data-animate]');
         const animateObserver = new IntersectionObserver(
             entries => {
                 entries.forEach(entry => {
                     if (!entry.isIntersecting) return;
+                    if (prefersReducedMotion.matches) {
+                        entry.target.style.transition = 'none';
+                        entry.target.classList.add('in-view');
+                        animateObserver.unobserve(entry.target);
+                        return;
+                    }
                     const delay = entry.target.dataset.delay || '0s';
                     entry.target.style.transitionDelay = delay;
                     entry.target.classList.add('in-view');
@@ -1154,20 +1195,53 @@
 
         const parallaxTargets = document.querySelectorAll('[data-parallax]');
         const mouse = { x: 0, y: 0 };
-        document.addEventListener('pointermove', event => {
-            mouse.x = event.clientX / window.innerWidth - 0.5;
-            mouse.y = event.clientY / window.innerHeight - 0.5;
-        });
-        function renderParallax() {
+        let parallaxFrame = null;
+
+        function applyParallax() {
+            parallaxFrame = null;
             parallaxTargets.forEach(el => {
                 const speed = parseFloat(el.dataset.speed || '0.2');
                 const translateX = mouse.x * speed * 60;
                 const translateY = mouse.y * speed * 60;
                 el.style.transform = `translate(${translateX}px, ${translateY}px)`;
             });
-            requestAnimationFrame(renderParallax);
         }
-        if (parallaxTargets.length) renderParallax();
+
+        function resetParallax() {
+            if (parallaxFrame) {
+                cancelAnimationFrame(parallaxFrame);
+                parallaxFrame = null;
+            }
+            parallaxTargets.forEach(el => {
+                el.style.transform = '';
+            });
+        }
+
+        function handlePointerMove(event) {
+            if (!parallaxTargets.length || prefersReducedMotion.matches) return;
+            mouse.x = event.clientX / window.innerWidth - 0.5;
+            mouse.y = event.clientY / window.innerHeight - 0.5;
+            if (!parallaxFrame) {
+                parallaxFrame = requestAnimationFrame(applyParallax);
+            }
+        }
+
+        document.addEventListener('pointermove', handlePointerMove);
+
+        const handleMotionPreference = event => {
+            if (event.matches) {
+                resetParallax();
+            }
+        };
+
+        if (typeof prefersReducedMotion.addEventListener === 'function') {
+            prefersReducedMotion.addEventListener('change', handleMotionPreference);
+        } else if (typeof prefersReducedMotion.addListener === 'function') {
+            prefersReducedMotion.addListener(handleMotionPreference);
+        }
+        if (prefersReducedMotion.matches) {
+            resetParallax();
+        }
 
         const neonToggle = document.getElementById('neon-toggle');
         const body = document.body;
@@ -1201,7 +1275,7 @@
                 const target = document.querySelector(anchor.getAttribute('href'));
                 if (target) {
                     e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    target.scrollIntoView({ behavior: prefersReducedMotion.matches ? 'auto' : 'smooth', block: 'start' });
                 }
             });
         });
@@ -1234,80 +1308,44 @@
             }, 5000);
         }
 
-        const statusTicker = document.querySelector('[data-status-ticker]');
-        const fluxTicker = document.querySelector('[data-flux-ticker]');
+        const levelDisplay = document.querySelector('[data-level-display]');
+        const levelSubcopy = document.querySelector('[data-level-subcopy]');
+        const levelProgressBar = document.querySelector('[data-level-progress]');
+        const quizQuestionEl = document.querySelector('[data-quiz-question]');
+        const quizOptionsEl = document.querySelector('[data-quiz-options]');
+        const quizHintEl = document.querySelector('[data-quiz-hint]');
+        const quizLogEl = document.querySelector('[data-quiz-log]');
 
-        function renderTicker(container, data) {
-            if (!container) return;
-            container.innerHTML = '';
-            const looped = [...data, ...data];
-            looped.forEach(item => {
-                const span = document.createElement('span');
-                span.className = 'ticker-chip';
-                span.innerHTML = `<span class="pulse-dot" aria-hidden="true"></span>${item}`;
-                container.appendChild(span);
-            });
-        }
-        function renderFlux(container, data) {
-            if (!container) return;
-            container.innerHTML = '';
-            data.forEach(item => {
-                const chip = document.createElement('span');
-                chip.className = 'ticker-chip';
-                chip.textContent = item;
-                container.appendChild(chip);
-            });
-        }
-        const defaultFeed = {
-            status: [
-                ['Operational calm online', 'NeverZero checkpoints synced', 'Reading stack rotating weekly', 'Momentum score steady 87%']
-            ],
-            flux: [
-                ['NeverZero prompts • 214 data points', 'Study loop latency • 11 mins', 'Reading backlog • 4 essays', 'Feedback queue • 3 peers']
-            ],
-            momentum: [
-                {
-                    focusHours: {
-                        value: '34 / wk',
-                        description: 'Deep work windows across Momentum Lab research and writing arcs.',
-                        delta: '+5 hrs vs last loop',
-                        progress: 0.85
-                    },
-                    research: {
-                        value: '4 Active',
-                        description: 'Signal reviews on philosophy, systems thinking, and interface craft.',
-                        delta: '3 micro-reports in queue',
-                        progress: 0.7
-                    },
-                    build: {
-                        value: '32 Days',
-                        description: 'Nightly utilities for NeverZero and vibe kit refreshes.',
-                        delta: 'No misses in last 4 weeks',
-                        progress: 0.95
-                    }
-                }
-            ]
-        };
-
-        let feedState = JSON.parse(JSON.stringify(defaultFeed));
-        let feedIndex = 0;
-
-        function updateMomentumCards(dataset) {
-            const source = dataset || defaultFeed.momentum[0];
-            Object.entries(source).forEach(([key, config]) => {
-                document.querySelectorAll(`[data-metric="${key}"][data-field]`).forEach(el => {
-                    const field = el.dataset.field;
-                    if (config[field]) {
-                        el.textContent = config[field];
-                    }
-                });
-                document.querySelectorAll(`[data-metric-bar="${key}"]`).forEach(bar => {
-                    if (typeof config.progress === 'number') {
-                        const width = Math.min(Math.max(config.progress, 0), 1) * 100;
-                        bar.style.width = `${width}%`;
-                    }
-                });
-            });
+        const QUIZ_KEY = 'level-quiz-state';
+        const REQUIRED_PER_LEVEL = 3;
+        const quizQuestions = [
+            {
+                question: 'Which ritual keeps NeverZero momentum steady?',
+                options: ['Nightly vibe coding recap', 'Random social scroll', 'Morning doom list'],
+                answer: 0,
+                hint: 'Think about deliberate practice.',
+                success: 'Nightly recap logged by visitor.'
+            },
+            {
+                question: 'What should Prashant document before shipping a feature?',
+                options: ['Reasoning + tradeoffs', 'Just the commit hash', 'Mood board playlist'],
+                answer: 0,
+                hint: 'Clarity beats vibes when collaborating.',
+                success: 'Tradeoffs captured for the build queue.'
+            },
+            {
+                question: 'Where does a fresh study loop start?',
+                options: ['Evidence board', 'Inbox zero', 'Random brainstorm'],
+                answer: 0,
+                hint: 'Systems beat hype.',
+                success: 'Evidence board boosted by visitor.'
+            },
+            {
+                question: 'If energy dips mid-week, visitors should nudge?',
+                options: ['Calm reset', 'Skip review', 'Add more tabs'],
+                answer: 0,
+                hint: 'Recovery > thrash.',
+                success: 'Calm reset suggestion landed.'
         }
 
         function applyMicrofeed(index = 0) {
